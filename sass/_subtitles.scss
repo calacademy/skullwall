@@ -1,0 +1,15 @@
+::cue {
+	background: none;
+	@include text-shadow(#000000 0 0 20px);
+}
+
+::-webkit-media-text-track-container {
+	@include box-sizing(border-box);
+	border: 25px solid transparent;
+}
+
+::-webkit-media-text-track-display {
+	color: #ffffff;
+	font-size: 40px;
+	// padding: 40px;
+}

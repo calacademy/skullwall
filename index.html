@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, maximum-scale=1">
+    <title>Sea Lion Skull Wall</title>
+
+    <link rel="stylesheet" href="stylesheets/global.css" />
+    <link rel="stylesheet" href="stylesheets/jquery.bxslider.css" />
+    <link rel="stylesheet" href="stylesheets/jquery.fancybox.min.css" />
+    
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/modernizr.calacademy.js"></script>
+    <script src="js/idle-timer.min.js"></script>
+    <script src="js/jquery.jsonp.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/sketchfab-viewer-1.0.3.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/progressindicator.js"></script>
+    <script src="js/skullwallmedia.js"></script>
+    <script src="js/skullwall.js"></script>
+
+    <script>
+
+      $(document).ready(function () {
+        var foo = new SkullWall();			
+      });
+
+    </script>
+
+  </head>
+  <body>
+    <div id="root">  
+      <ul id="languages">  
+          <li id="tl">Filipino</li>
+          <li id="cn">繁体中文</li>
+          <li id="es">Español</li>
+          <li id="en" class="active">English</li>
+      </ul>
+
+      <button id="close">Close</button>
+      
+      <div id="media-overlay"></div>
+      
+      <section id="wall">
+        <header>
+          <div class="index-column">
+            <h1>Sea Lion Skull Wall</h1>
+            <h2>Touch to find out more about the sea lion skulls on the wall above</h2>
+            <ul class="nav-collapsed">
+              <li>Explore</li>
+            </ul>
+          </div>
+          <nav class="index-column">
+            <div id="map">
+              <ul class="thumbnails carousel-nav">
+                <li data-slide-id="f02"><label>F02</label></li>
+                <li data-slide-id="e08"><label>E08</label></li>
+                <li data-slide-id="c34"><label>C34</label></li>
+                <li data-slide-id="h36"><label>H36</label></li>
+                <li data-slide-id="g53"><label>G53</label></li>
+                <li data-slide-id="h20"><label>H20</label></li>
+                <li data-slide-id="f32"><label>F32</label></li>
+                <li data-slide-id="g38"><label>G38</label></li>
+                <li data-slide-id="d45"><label>D45</label></li>
+                <li data-slide-id="e10"><label>E10</label></li>
+                <li data-slide-id="c17"><label>C17</label></li>
+                <li data-slide-id="e43"><label>E43</label></li>
+                <li data-slide-id="d47"><label>D47</label></li>
+              </ul>
+            </div>
+            <ul id="categories" class="carousel-nav">
+              <li data-category="noteworthy">Noteworthy Skulls</li>
+              <li data-category="death">Cause of Death</li>
+              <li data-category="imposter-index" class="imposter">Spot the Imposter</li>
+            </ul>
+          </nav>
+        </header>
+
+        <div class="content carousel-container">
+          <nav class="carousel-buttons">
+            <div class="prev"></div>
+            <div class="next"></div>
+          </nav>
+
+          <ul id="carousel-wall" class="slides">
+            
+            <li data-slide-id="f02" data-category="noteworthy">
+              <div class="container">
+                <div class="col description">
+                  <h1>F02</h1>
+                  <h2>Noteworthy Skull</h2>
+                  <p>
+                    Ray Bandar, an Academy field associate, collected every sea lion skull on the wall above. He picked up this specimen from a Bay Area beach in 1957&mdash;making it the oldest sea lion skull in the bunch.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/f02.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Male California sea lion <i>Zalophus californianus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 25979</p>
+                  </li>
+                  <li>
+                    <h3>Year</h3>
+                    <p>1957</p>
+                  </li>
+                  <li>
+                    <h3>Location Collected</h3>
+                    <p>Princeton Beach, San Mateo County</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li data-slide-id="e08" data-category="noteworthy">
+              <div class="container">
+                <div class="col description">
+                  <h1>E08</h1>
+                  <h2>Noteworthy Skull</h2>
+                  <p>
+                    Powerful jaw muscles attach to the large head-top ridge&mdash;or sagittal crest—on this male sea lion&rsquo;s skull. Fighting other males for territory is key to winning mates. A hefty body and prominent sagittal crest can be an evolutionary advantage for males.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/e08.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Male California sea lion <i>Zalophus californianus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 26046</p>
+                  </li>
+                  <li>
+                    <h3>Year</h3>
+                    <p>1990</p>
+                  </li>
+                  <li>
+                    <h3>Location Collected</h3>
+                    <p>Half Moon Bay, San Mateo County</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li data-slide-id="c34" data-category="noteworthy">
+              <div class="container">
+                <div class="col description">
+                  <h1>C34</h1>
+                  <h2>Noteworthy Skull</h2>
+                  <p>
+                    Young females, like this one, can grow up to 110 kilograms (240 pounds) on a diet of small fish and squid. Male sea lions may grow to be much larger: up to 390 kilograms (860 pounds).
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/c34.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Female California sea lion <i>Zalophus californianus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 26318</p>
+                  </li>
+                  <li>
+                    <h3>Year</h3>
+                    <p>1996</p>
+                  </li>
+                  <li>
+                    <h3>Location Collected</h3>
+                    <p>Ocean Beach, San Francisco County</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li data-slide-id="h36" data-category="noteworthy">
+              <div class="container">
+                <div class="col description">
+                  <h1>H36</h1>
+                  <h2>Noteworthy Skull</h2>
+                  <p>
+                    This sea lion was caught from the wild in 1969 and lived in captivity at Marine World&mdash;an animal theme park&mdash;until 1984.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/h36.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Female California sea lion <i>Zalophus californianus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 26310</p>
+                  </li>
+                  <li>
+                    <h3>Year</h3>
+                    <p>Died 1984</p>
+                  </li>
+                  <li>
+                    <h3>Location Collected</h3>
+                    <p>Captive at Redwood City, San Mateo County</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li data-slide-id="g53" data-category="noteworthy">
+              <div class="container">
+                <div class="col description">
+                  <h1>G53</h1>
+                  <h2>Noteworthy Skull</h2>
+                  <p>
+                    When alive, this animal&rsquo;s entire body measured almost three meters (nine feet) long&mdash;making it the longest specimen represented on the wall. 
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/g53.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Male California sea lion <i>Zalophus californianus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 26252</p>
+                  </li>
+                  <li>
+                    <h3>Year</h3>
+                    <p>1971</p>
+                  </li>
+                  <li>
+                    <h3>Location Collected</h3>
+                    <p>Redondo Beach, San Mateo County</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+
+
+
+
+            <li data-slide-id="h20" data-category="death">
+              <div class="container">
+                <div class="col description">
+                  <h1>H20</h1>
+                  <h2>Cause of death: gunshot wound</h2>
+                  <p>
+                    Although California sea lions have been sheltered from harm since 1972 under the Marine Mammal Protection Act, some animals are still killed by humans.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/h20.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Male California sea lion <i>Zalophus californianus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 30148</p>
+                  </li>
+                  <li>
+                    <h3>Year</h3>
+                    <p>2006</p>
+                  </li>
+                  <li>
+                    <h3>Location Collected</h3>
+                    <p>Ocean Beach, San Francisco County</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li data-slide-id="f32" data-category="death">
+              <div class="container">
+                <div class="col description">
+                  <h1>F32</h1>
+                  <h2>Cause of death: fishing net laceration</h2>
+                  <p>
+                    Lost or abandoned fishing nets can wrap around an animal&rsquo;s body and cut deep into the skin. These wounds may become infected, weakening or killing the animal.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/f32.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Male California sea lion <i>Zalophus californianus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 26300</p>
+                  </li>
+                  <li>
+                    <h3>Year</h3>
+                    <p>1996</p>
+                  </li>
+                  <li>
+                    <h3>Location Collected</h3>
+                    <p>Venice State Beach, San Mateo County</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li data-slide-id="g38" data-category="death">
+              <div class="container">
+                <div class="col description">
+                  <h1>G38</h1>
+                  <h2>Cause of death: shark attack</h2>
+                  <p>
+                    Great white sharks, bull sharks, and orcas are known to prey on sea lions. This animal suffered a deadly shark bite.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/g38.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Female California sea lion <i>Zalophus californianus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 26378</p>
+                  </li>
+                  <li>
+                    <h3>Year</h3>
+                    <p>1983</p>
+                  </li>
+                  <li>
+                    <h3>Location Collected</h3>
+                    <p>Año Nuevo Point, San Mateo County</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li data-slide-id="d45" data-category="death">
+              <div class="container">
+                <div class="col description">
+                  <h1>D45</h1>
+                  <h2>Cause of death: traumatic injury</h2>
+                  <p>
+                    A concrete retaining wall collapsed alongside a lighthouse tower on Año Nuevo Island. It killed this animal and three other sleeping sea lions.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/d45.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Male California sea lion <i>Zalophus californianus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 25782</p>
+                  </li>
+                  <li>
+                    <h3>Year</h3>
+                    <p>1971</p>
+                  </li>
+                  <li>
+                    <h3>Location Collected</h3>
+                    <p>Año Nuevo Island, San Mateo County</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+
+
+
+
+
+            <li data-slide-id="spot-the-imposter" data-category="imposter-index">
+              <div class="container imposter">
+                <div class="col title">
+                  <h1>Spot the Imposter</h1>
+                </div>
+                <div class="col body">
+                  <p>
+                    Can you find the impostors on the wall? Among the 420 sea lion skulls above you, we&rsquo;ve hidden four similarly-sized skulls that belong to other animals. Look closely to spot their differences.
+                  </p>
+                  <ul class="thumbnails carousel-nav">
+                    <li data-slide-id="e10"><img src="images/wall/imposter-index/e10.png" /><label>E10</label></li>
+                    <li data-slide-id="c17"><img src="images/wall/imposter-index/c17.png" /><label>C17</label></li>
+                    <li data-slide-id="e43"><img src="images/wall/imposter-index/e43.png" /><label>E43</label></li>
+                    <li data-slide-id="d47"><img src="images/wall/imposter-index/d47.png" /><label>D47</label></li>
+                  </ul>
+                  <p class="small">Touch to learn more about the species hiding among the sea lions.</p>
+                </div>
+              </div>
+            </li>
+
+            <li data-slide-id="e10" data-category="imposter">
+              <div class="container">
+                <div class="col description">
+                  <h1>E10</h1>
+                  <h2>Sea lion impostor: African lion</h2>
+                  <p>
+                    Big cats use their four long canine teeth to grip the neck of prey. A lion crushes an animal&rsquo;s windpipe to suffocate it. It then uses carnassials&mdash;a pair of side teeth that come together like scissors&mdash;to shear off pieces of flesh. Meat-eaters don&rsquo;t chew much, swallowing their food in large chunks.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/e10.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>African lion <i>Panthera leo</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>Cast skull</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li data-slide-id="c17" data-category="imposter">
+              <div class="container">
+                <div class="col description">
+                  <h1>C17</h1>
+                  <h2>Sea lion impostor: gray wolf</h2>
+                  <p>
+                    Most predators have excellent depth perception. Forward-facing eyes form independent images that the brain combines to determine the distance of prey.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/c17.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Gray wolf <i>Canis lupus</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>Cast skull</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li data-slide-id="e43" data-category="imposter">
+              <div class="container">
+                <div class="col description">
+                  <h1>E43</h1>
+                  <h2>Sea lion impostor: wild boar</h2>
+                  <p>
+                    The impressive tusks of this male boar are actually canine teeth that never stop growing. The upper and lower tusks slide against one another, keeping them razor sharp.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/e43.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Wild boar <i>Sus scrofa</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>CAS No. 30140</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li data-slide-id="d47" data-category="imposter">
+              <div class="container">
+                <div class="col description">
+                  <h1>D47</h1>
+                  <h2>Sea lion impostor: sheep</h2>
+                  <p>
+                    Sheep are on the lookout for danger. These prey animals have side-oriented eyes with panoramic vision to watch for predators.
+                  </p>
+                </div>
+                <div class="col">
+                  <a class="image" href="images/wall/large/d47.png" data-width="1920" data-height="1035" data-fancybox="images"></a>
+                </div>
+                <ul class="col data">
+                  <li>
+                    <h3>Species</h3>
+                    <p>Sheep <i>Ovis aries</i></p>
+                  </li>
+                  <li>
+                    <h3>Collection Info</h3>
+                    <p>Cast skull</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </section>
+      
+
+
+
+
+      <section id="behind" class="collapsed">
+        <header>
+          <div class="index-column">
+            <h1>Behind the Exhibit</h1>
+            <h2>Learn more about what went into this exhibit</h2>
+            <ul class="nav-collapsed">
+              <li>Explore</li>
+            </ul>
+          </div>
+          <nav class="index-column">
+            <ul class="thumbnails carousel-nav">
+              <li data-slide-id="skull-collector">
+                <img src="images/behind/small/the-skull-collector.jpg" />
+                <h3>The Skull Collector</h3>
+              </li>
+              <li data-slide-id="why-collect">
+                <img src="images/behind/small/why-collect-so-many.jpg" />
+                <h3>Why Collect So Many Skulls?</h3>
+              </li>
+              <li data-slide-id="playful">
+                <img src="images/behind/small/playful-protected-pinnipeds.jpg" />
+                <h3>Playful Protected Pinnipeds</h3>
+              </li>
+              <li data-slide-id="stranding-network">
+                <img src="images/behind/small/marine-mammal-stranding-network.jpg" />
+                <h3>Marine Mammal Stranding Network</h3>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <div class="content carousel-container">
+          <nav class="carousel-buttons">
+            <div class="prev"></div>
+            <div class="next"></div>
+          </nav>
+
+          <ul id="carousel-behind" class="slides">
+            <li data-slide-id="skull-collector">
+              <div class="container">
+                <div class="col info">
+                  <h1>The Skull Collector</h1>
+                  <h2>Ray &ldquo;Bones&rdquo; Bandar<br />California Academy of Sciences Field Associate</h2>
+                  <p>
+                    Ray &ldquo;Bones&rdquo; Bandar collected, cleaned, and prepared all of the sea lion skulls you see on the wall above you. 
+                  </p>
+                  <p>
+                    Employed by the Academy for a few years in the 1950s, he volunteered as a field associate for more than 60 years.  Bandar collected more than 6,000 skulls, including roughly 2,000 from California sea lions, building the world&rsquo;s largest museum collection of this species. His work lives on through its enormous value to the Academy and marine mammal research internationally.
+                  </p>
+                </div>
+                <div class="col image video">
+                  <img src="images/behind/the-skull-collector.jpg" />
+                  <div class="progress-indicator"></div>
+                  <button class="media-button inline-video">Play</button>
+
+                  <video src="videos/fpo.mov" poster="images/behind/the-skull-collector.jpg">
+                    <!--
+                    <track label="English" kind="subtitles" srclang="en" src="videos/fpo.vtt" />
+                    <track label="German" kind="subtitles" srclang="de" src="videos/fpo.vtt" />
+                    //-->
+                  </video>
+                </div>
+              </div>
+            </li>
+            <li data-slide-id="why-collect">
+              <div class="container">
+                <div class="col info">
+                  <h1>Why Collect So Many Skulls?</h1>
+                  
+                  <p>
+                    The wall above holds more than 400 California sea lion (<i>Zalophus californianus</i>) skulls, a fraction of the Academy&rsquo;s collection.
+                  </p>
+
+                  <p>
+                    Large collections show similarities and differences between animals, allowing scientists to learn about populations, ecosystems, and animal health. The more specimens we have, the more accurate our data.
+                  </p>
+
+                  <p>
+                    About 75% of the skulls on the wall are adult males. The remaining skulls are from the smaller females or juvenile males (with many positioned toward the center of the wall).
+                  </p>
+
+                  <div class="model-button-container" data-sketchfab-id="bace0dcbdadd4f788185bd6f2a246049">
+                    <img src="images/behind/model.png" />
+                    <button class="media-button">Explore a skull in 3D</button>
+                  </div>
+
+                </div>
+                <div class="col image">
+                  <img src="images/behind/why-collect-so-many.jpg" /> 
+                </div>
+              </div>
+            </li>
+            <li data-slide-id="playful">
+              <div class="container">
+                <div class="col info">
+                  <h1>Playful Protected Pinnipeds</h1>
+                  
+                  <p>
+                    California sea lions (<i>Zalophus californianus</i>) are found from Mexico to Canada in onshore groups of several hundred. These smart, playful, and social animals are thriving under the protection of the 1972 Marine Mammal Protection Act.
+                  </p>
+                </div>
+                <div class="col image">
+                    <img src="images/behind/playful-protected-pinnipeds.jpg" /> 
+
+                    <div class="photo-credit">
+                      Gerald and Buff Corsi &copy; California Academy of Sciences
+                    </div>  
+                </div>
+              </div>
+            </li>
+            <li data-slide-id="stranding-network">
+              <div class="container">
+                <div class="col info">
+                  <h1>Marine Mammal Stranding Network</h1>
+                  
+                  <p>
+                    The California Academy of Sciences participates in the Marine Mammal Stranding Network, established by the National Marine Fisheries Service. The Academy and trained volunteers respond to dead marine animals along roughly 165 miles of California coastline. If a dead animal washes ashore, Academy scientists collect bones, DNA, and other valuable information for research purposes.
+                  </p>
+
+                  <p class="caption">
+                      Right: Moe Flannery, Academy collections manager, responds to marine mammal strandings along the California coastline from Sonoma County to San Mateo County.
+                    </p>
+                </div>
+                <div class="col image">
+                  <img src="images/behind/marine-mammal-stranding-network.jpg" /> 
+                  <div class="photo-credit">
+                    Denise Greig &copy; California Academy of Sciences
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <div id="preload">
+    </div>
+  </body>
+</html>

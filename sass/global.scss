@@ -1,0 +1,1100 @@
+@import "global-variables";
+@import "compass/reset";
+@import "compass/css3/opacity";
+@import "compass/css3/user-interface";
+@import "compass/css3/animation";
+@import "subtitles";
+
+// disable user select
+.touch {
+	* {
+		cursor: none;
+		-webkit-touch-callout: none;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		@include user-select(none);
+	}
+}
+
+html {
+	height: 100%;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+
+body {
+	// curly quotes
+	-webkit-font-feature-settings: 'ss17' 1;
+	font-feature-settings: 'ss17' 1;
+
+	#preload {
+		position: absolute;
+		left: -9999999px;
+	}
+
+	.fancybox-container {
+		width: $stageWidth;
+		top: $translationUIHeight;
+		height: $stageHeight - $translationUIHeight;
+
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&, *, ::cue {
+		font-family: 'Whitney', Helvetica, Arial, sans-serif;
+		outline: none;
+	}
+
+	i {
+		font-style: italic;
+	}
+
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	font-weight: $book;
+	background-color: #999999;
+	color: #ffffff;
+
+	#root {
+		position: relative;
+		background-color: #000000;
+		
+		@include box-sizing(border-box);
+		width: $stageWidth;
+		height: $stageHeight;
+		overflow: hidden;
+		margin-left: auto;
+		margin-right: auto;
+
+		background-image: url('../images/bg.png');
+		background-repeat: no-repeat;
+		@include background-size(cover);
+
+		button {
+			background-color: transparent;
+			border: none;
+			@include buttony;
+		}
+
+		.photo-credit,
+		.caption {
+			font-size: 14px;
+			line-height: 16px;
+			font-weight: $book;
+			color: #000000;
+		}
+
+		#languages {
+		    background-color: #000000;
+		    width: 100%;
+		    overflow: hidden;
+		    clear: both;
+
+		    li {
+		    	@include box-sizing(border-box);
+		    	@include buttony;
+
+		    	float: right;
+		    	height: $translationUIHeight;
+		    	border-left: 1px solid #ffffff;
+
+		    	font-size: 17px;
+			    line-height: 1;
+			    letter-spacing: 1.25px;
+			    text-transform: uppercase;
+			    padding-left: 60px;
+			    padding-right: 60px;
+			    padding-top: 14px;
+
+			    color: $blue;
+			    font-weight: $medium;
+			    font-family: 'Whitney Condensed';
+
+		    	&#cn {
+		    		font-family: 'HanSans';
+		    	}
+
+		    	&.active {
+					font-weight: $semibold;
+        			color: #ffffff;
+        			pointer-events: none;
+		    	}
+		    }
+		}
+
+		#close {
+			@include box-sizing(border-box);
+
+			z-index: 9999999;
+			position: absolute;
+			
+			text-indent: -999px;
+			overflow: hidden;
+
+			$dim: 60px;
+			$left: 50px;
+			$top: 30px;
+
+			width: $dim + ($left * 2);
+			height: $dim + ($top * 2);
+
+			background-color: transparent;
+			border: none;
+
+			background-image: url('../images/icons/close-white.svg');
+			background-repeat: no-repeat;
+			background-position: $left $top;
+			@include background-size($dim $dim);
+
+			@include opacity(0);
+			pointer-events: none;
+
+			.content-open & {
+				@include transition(
+					opacity .4s $easing
+				);
+
+				@include opacity(1);
+				pointer-events: all;
+			}
+
+			@include buttony(true, true, 0.7, true);
+
+			.behind-active & {
+				background-image: url('../images/icons/close-blue.svg');
+			}
+
+			.media & {
+				background-image: url('../images/icons/close-white.svg');
+			}
+		}
+
+		#media-overlay {
+			display: none;
+
+			position: absolute;
+			z-index: 9999998;
+			top: $translationUIHeight;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ffffff;
+
+			video, iframe, img {
+				@include animation(fade-in 2s $easing);
+				width: 100%;
+				height: 100%;
+			}
+
+			.media & {
+				display: block;	
+			}
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: $translationUIHeight;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 2;
+			background-color: rgba(#000000, .5);
+
+			@include transition(
+				opacity .3s $easing
+			);
+
+			@include opacity(0);
+		}
+
+		.content-open.wall-active & {
+			&:after {
+				@include transition-delay(.2s);
+				@include opacity(1);
+			}
+		}
+
+		section {
+			.expanding &,
+			.media & {
+				pointer-events: none;
+			}
+
+			// 
+			@include transition(
+				box-shadow .3s $easing
+			);
+
+			@include single-box-shadow(rgba(#000000, 0), 0, 0, 10px);
+
+			&.highlight {
+				@include single-box-shadow(rgba(#000000, .25), 0, 0, 30px);
+
+				&#wall.subnav-open {
+					@include single-box-shadow(rgba(#000000, 0), 0, 0, 10px);
+				}
+			}
+			//
+
+			position: relative;
+			z-index: 3;
+
+			background-color: $blue;
+			margin: 50px;
+			margin-top: 30px;
+			margin-bottom: 30px;
+			padding-top: 30px;
+			padding-bottom: 30px;
+
+			header {
+				h1, h2 {
+					// text-align: center;
+					@include box-sizing(border-box);
+					padding-left: 50px;
+				}
+
+				h1 {
+					@include head;
+				}
+				h2 {
+					@include subhead;
+
+					margin-top: 30px;
+					margin-bottom: 30px;
+				}
+
+				ul {
+					text-align: center;
+
+					li {
+						@include buttony;
+						@include button-with-border(#ffffff);
+
+						&.active {
+							pointer-events: none;
+							background-color: #ffffff;
+							color: $blue;
+
+							&.imposter {
+								pointer-events: all;
+
+								.spot-the-imposter & {
+									pointer-events: none;
+								}
+							}
+						}
+
+						margin-right: 20px;
+
+						&:last-child {
+							margin-right: 0;
+						}
+					}
+
+					&.nav-collapsed {
+						display: none;
+
+						li {
+							min-width: inherit;
+						}
+					}
+				}
+			}
+
+			&.collapsed {
+				.index-column {
+					width: 50%;
+					float: left;
+
+					.nav-collapsed {
+						padding-left: 50px;
+						text-align: left;
+					}
+				}
+
+				header {
+					ul {
+						display: none;
+
+						&.nav-collapsed {
+							display: block;
+						}
+					}
+
+					#map {
+						.thumbnails {
+							display: block;
+						}
+					}
+				}
+			}
+
+			.content {
+				display: none;
+
+				.container {
+					@include box-sizing(border-box);
+					background-color: #ffffff;
+					color: #000000;
+					font-size: 24px;
+					line-height: 28px;
+
+					width: 100%;
+					overflow: hidden;
+
+					h1 {
+						color: $blue;
+						@include head(true);
+					}
+					h2 {
+						font-weight: $semibold;
+						font-size: 22px;
+					}
+
+					h1, h2 {
+						margin-bottom: 30px;
+					}
+				}
+			}
+
+			&.open {
+				.content {
+					display: none;
+				}
+
+				&.subnav-open {
+					.content {
+						display: block;
+						@include animation(fade-in .5s $easing);
+					}
+				}
+			}
+
+			.bx-controls {
+				.bx-pager {
+					width: $stageWidth - ($slideMargin * 4);
+
+					bottom: 40px;
+					pointer-events: none;
+					z-index: 2;
+
+					div {
+						a {
+							@include box-shadow(none);
+							background: rgba(#000000, 0.25);
+
+							&.active {
+								background: rgba(#000000, 0.75);								
+							}
+						}
+					}
+				}
+			}
+
+			.carousel-buttons {
+				@include box-sizing(border-box);
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				z-index: 1;
+				pointer-events: none;
+
+				& > div {
+					$iconDim: 43px;
+
+					a {
+						@include buttony;
+						pointer-events: all;
+
+						margin: 0;
+						padding: 0;
+						display: table;
+						color: $blueDark;
+						text-decoration: none;
+						font-size: 24px;
+
+						height: $iconDim * 2;
+						background-repeat: no-repeat;
+						@include background-size($iconDim $iconDim);
+
+						div {
+							display: table-cell;
+							vertical-align: middle;
+							@include animation(fade-in .4s $easing);	
+						}	
+					}
+
+					&.prev {
+						float: left;
+						
+						a {
+							padding-left: $iconDim + 15px;
+							padding-right: 25px;
+							background-image: url('../images/icons/previous-blue.png');
+							background-position: center left;
+						}
+					}
+					&.next {
+						float: right;
+						
+						a {
+							padding-right: $iconDim + 15px;
+							padding-left: 25px;
+							background-image: url('../images/icons/next-blue.png');
+							background-position: center right;
+						}
+					}
+				}
+			}
+
+			&#wall {
+				header {
+					h2 {
+						@include animation(fade-in .4s $easing);
+					}
+					
+					#map {
+						margin-left: auto;
+						margin-right: auto;
+						margin-top: 80px;
+						margin-bottom: 50px;
+
+						$w: 1700px;
+						$h: 330px;
+						width: $w;
+						height: $h;
+
+						background-image: url('../images/grid.svg');
+						background-repeat: no-repeat;
+						@include background-size($w $h);
+
+						ul {
+							list-style: none;
+							position: relative;
+
+							@include transition(
+								opacity .3s $easing
+							);
+
+							@include opacity(1);
+
+							.spot-the-imposter & {
+								@include opacity(0);
+								pointer-events: none;
+							}
+
+							li {
+								@include transition(
+									opacity .3s $easing,
+									transform .4s $easing
+								);
+
+								pointer-events: none;
+								@include opacity(0);
+								@include transform(scale(.25));
+
+								&.show {
+									pointer-events: all;
+									@include opacity(1);
+									@include transform(scale(1));
+									@include buttony(true, false);
+								}
+
+								position: absolute;
+
+								padding: 0;
+								margin: 0;
+								border: 0;
+								min-width: inherit;
+
+								@include border-radius(25px);
+								border: 1px solid #ffffff;
+								background-color: $blueDark;
+
+								&, label {
+									@include box-sizing(border-box);
+									width: 50px;
+									height: 50px;
+									overflow: hidden;
+								}
+
+								background-repeat: no-repeat;
+								@include background-size(cover);
+								background-position: center;
+
+								label {
+									background-color: #ffffff;
+									color: $blueDark;
+									font-weight: $medium;
+									line-height: 49px;
+									pointer-events: none;
+
+									@include animation(fade-in .3s $easing);
+									display: none;
+								}
+
+								&.active {
+									pointer-events: none;
+									
+									label {
+										display: block;
+									}
+								}
+
+								.behind-active & {
+									pointer-events: none;
+								}
+							}
+						}	
+					}
+				}
+
+				/*
+				header {
+					h1,
+					nav #map,
+					nav ul {
+						will-change: transform;
+						@include transform(translateZ(0));
+
+						@include transition(
+							transform .5s $easing
+						);
+					}
+				}
+				*/
+
+				.shrink-wall & {
+					header {
+						overflow: hidden;
+
+						nav {
+							#map {
+								@include transform(scale(.52) translateX(-47%) translateY(-75%));
+							}
+							ul {
+								@include transform(translateY(-535%));	
+							}
+						}
+					}
+
+					height: 250px;
+				}
+
+				&.open.subnav-open {
+					@include transform(translateY(-5%));	
+
+					header {
+						h1 {
+							@include transform(scale(.5) translateY(-40%));
+							padding: 0;
+							text-align: center;
+						}
+						h2 {
+							display: none;
+						}
+						nav {
+							#map {
+								@include transform(scale(.5) translateY(-95%));
+							}
+							ul {
+								@include transform(translateY(-530%));	
+							}
+						}
+					}
+
+					background-color: transparent;
+
+					.content {
+						@include transform(translateY(-37%));
+					}
+				}
+
+				.content {
+					position: absolute;
+					width: $stageWidth;
+					left: -50px;
+
+					.carousel-buttons {
+						padding: 70px;
+						padding-bottom: 5px;
+					}
+
+					.bx-wrapper {
+						left: 50px;
+					}
+
+					.bx-clone {
+						@include animation(fade-in .4s $easing);
+					}
+
+					.container {
+						height: 625px;
+						padding: 45px;
+						position: relative;
+
+						.col {
+							@include box-sizing(border-box);
+							width: 33.333%;
+							float: left;
+
+							&.description {
+								padding-right: 60px;
+							}
+							&.data {
+								padding-left: 60px;
+							}
+
+							& > img {
+								// only used for preloading
+								display: none;
+							}
+
+							.image {
+								pointer-events: none;
+
+								display: block;
+								position: relative;
+								@include background-size(cover);
+								background-repeat: no-repeat;
+								background-position: center center;
+								height: 495px;
+
+								img {
+									visibility: hidden;
+									z-index: 1;
+								}
+
+								button {
+									pointer-events: all;
+
+									z-index: 2;
+									position: absolute;
+									top: 0;
+									right: 0;
+
+									$dim: 43px;
+									$padding: 10px;
+
+									width: $dim + ($padding * 2);
+									height: $dim  + ($padding * 2);
+									overflow: hidden;
+									text-indent: -999px;
+									background-image: url('../images/icons/expand.png');
+									background-repeat: no-repeat;
+									@include background-size($dim $dim);
+									background-position: center;
+									padding: $padding;
+								}
+							}
+
+							&.data {
+								li {
+									padding-top: 15px;
+									padding-bottom: 25px;
+
+									border-bottom: 1px solid #cccccc;
+
+									h3 {
+										font-weight: $semibold;
+										color: $blueDark;
+										@include small-caps;
+										line-height: 10px;
+										margin-bottom: 10px;
+
+										&:after {
+											content: ':';
+										}
+									}
+								}
+							}
+						}
+
+						&.imposter {
+							.col.title {
+								width: 30%;
+
+								h1 {
+									@include head(true);
+								}
+							}
+							.col.body {
+								width: 60%;
+
+								p {
+									@include subhead(true);
+								}
+
+								ul {
+									margin-top: 50px;
+									margin-bottom: 30px;
+									width: 100%;
+									overflow: hidden;
+
+									li {
+										@include box-sizing(border-box);
+										@include buttony;
+										padding-right: 20px;
+										float: left;
+										width: 25%;
+
+										label {
+											display: none;
+										}
+									}
+								}
+
+								.small {
+									font-size: 22px;
+									text-align: center;
+								}
+							}
+						}
+
+						&:after {
+							pointer-events: none;
+							position: absolute;
+							content: '';
+							z-index: 3;
+							top: 0;
+							left: 0;
+							bottom: 0;
+							right: 0;
+
+							// background-color: rgba(#000000, 0.5);
+							// @include animation(fade-in .6s $easing);
+							// display: none;
+
+							@include transition(
+								opacity .6s $easing
+							);
+
+							background-color: #000000;
+							@include opacity(0);
+						}
+					}
+
+					.inactive-slide {
+						pointer-events: none;
+						
+						.container:after {
+							// display: block;
+
+							@include opacity(.5);
+						}
+					}
+				}
+			}
+
+			&#behind {
+			 	overflow: hidden;
+
+				header {
+					nav {
+						.thumbnails {
+							@include animation(fade-in .4s $easing);
+
+							width: 100%;
+							overflow: hidden;
+
+							li {
+								// pointer-events: none;
+								background-color: #ffffff;
+								display: block;
+								border: none;
+
+								float: left;
+								margin: 0;
+								padding: 0;
+
+								$thumbnailPadding: 50px;
+								margin-left: $thumbnailPadding;
+
+								@include box-sizing(border-box);
+								padding: 3px;
+								width: calc((100% - #{($thumbnailPadding * 5)}) / 4);
+								
+								height: 420px;
+								overflow: hidden;
+
+								.img-container {
+									background-repeat: no-repeat;
+									background-position: center center;
+									@include background-size(cover);
+									width: 100%;
+									height: 280px;
+
+									img {
+										display: none;
+									}
+								}
+
+								h3 {
+									padding-top: 25px;
+									padding-left: 15px;
+									padding-right: 15px;
+
+									width: 75%;
+									text-align: left;
+									color: $blueDark;
+									@include subhead(true);
+									font-weight: $book;
+								}
+							}
+						}
+					}
+				}
+
+				&.collapsed {
+					.thumbnails {
+						display: block;
+
+						li {
+							margin-left: 22px;
+
+							&:first-child {
+								margin-left: 0;
+							}
+
+							$dim: 190px;
+							$padding: 3px;
+
+							min-width: inherit;
+							height: inherit;
+							padding: 3px;
+							width: $dim + ($padding * 2);
+
+							.img-container {
+								width: $dim;
+								height: $dim;
+							}
+
+							h3 {
+								display: none;
+							}
+
+							&.stranding-network {
+								.img-container {
+									background-position: right center;
+								}
+							}
+						}
+					}
+				}
+
+				.carousel-buttons {
+					padding: 50px;
+					padding-bottom: 25px;
+				}
+				
+				&.open {
+					.thumbnails li {
+						pointer-events: all;
+					}
+
+					&.subnav-open {
+						position: static;
+					}
+				}
+
+				.wall-active.content-open & {
+					display: none;
+				}
+
+				.content {
+					position: absolute;
+					background-color: #ffffff;
+					width: 100%;
+					z-index: 10;
+					left: 0;
+					top: $translationUIHeight;
+					bottom: 0;
+					right: 0;
+					padding-top: 120px;
+
+					// hide pagination for this carousel
+					.flex-control-paging,
+					.bx-pager {
+						display: none;
+					}
+
+					.container {
+						@include box-sizing(border-box);
+						padding: 50px;
+						padding-top: 0;
+						height: 900px;
+
+						.col {
+							@include box-sizing(border-box);
+							width: 50%;
+							float: left;
+
+							&.info {
+								padding-right: 140px;
+
+								h2 {
+									color: $blueGrey;
+									font-weight: $book;
+									@include subhead(true);
+									margin-bottom: 60px;
+								}
+								p {
+									font-weight: $book;
+									margin-bottom: 30px;
+								}
+							}
+
+							// hack for fixing disappearing slider items
+							&,
+							.photo-credit,
+							.model-button-container,
+							button,
+							video {
+								@include backface-visibility(hidden);
+							}
+
+							&.image {
+								height: calc(100% - 100px);
+								overflow: hidden;	
+								
+								@include background-size(cover);
+								background-position: center center;
+								position: relative;
+
+								overflow: visible;
+
+								.photo-credit {
+									position: absolute;
+									bottom: -28px;
+								}
+
+								img {
+									display: none;
+								}
+
+								button {
+									position: absolute;
+									right: 20px;
+									bottom: 20px;
+
+									width: 160px;
+									height: 160px;
+									background-image: url('../images/icons/play.svg');
+									@include background-size(cover);
+									text-indent: -999px;
+									overflow: hidden;
+									z-index: 2;
+								}
+
+								&.video {
+									// calculated from video aspect
+									height: 660px;
+									overflow: hidden;
+
+									video {
+										position: absolute;
+										top: 0;
+										left: 0;
+										bottom: 0;
+										right: 0;
+
+										width: 100%;
+										z-index: 1;
+									}
+
+									button {
+										pointer-events: all;
+
+										@include opacity(1);
+										@include buttony;
+									}
+
+									.progress-indicator {
+										z-index: 3;
+										position: absolute;
+										@include transition-delay(1s);
+										
+										top: 20px;
+										right: 20px;
+
+										svg {
+											@include transform(rotate(-90deg));
+
+											width: 50px;
+											height: 50px;
+
+											circle {
+												fill: none;
+
+												&.progress {
+													stroke: #ffffff;
+													stroke-width: 6;
+												}
+												&.bg {
+													stroke: #000000;
+													stroke-width: 2;
+												}
+											}
+										}
+									}
+
+									video,
+									.progress-indicator {
+										@include opacity(0);
+									}
+
+									.video-playing & {
+										video,
+										.progress-indicator,
+										button {
+											@include transition(
+												opacity .6s $easing .3s
+											);
+										}
+
+										video,
+										.progress-indicator {
+											@include opacity(1);
+										}
+
+										button {
+											pointer-events: none;
+											@include opacity(0);
+										}
+									}
+								}
+							}
+
+							.model-button-container {
+								position: absolute;
+								bottom: 150px;
+								width: 50%;
+
+								img, button {
+									float: left;
+								}
+
+								img {
+									width: 100px;
+									height: 50px;
+								}
+
+								button {
+									@include buttony;
+									@include button-with-border($blueDark);
+									margin-left: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

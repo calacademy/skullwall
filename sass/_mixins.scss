@@ -1,0 +1,85 @@
+@import "compass/css3";
+@import "compass/utilities";
+@import "compass/css3/user-interface";
+
+@mixin small-caps {
+	text-transform: lowercase;
+	font-variant: small-caps;
+}
+
+@mixin buttony($transitionDuration: false, $withActive: true, $targetOpacity: 0.7, $contentOpen: false) {
+	cursor: hand;
+	cursor: pointer;
+
+	@if $withActive {
+		@if $contentOpen {
+			&.highlight,
+			.content-open.touch &:active,
+			.content-open.no-touch &:hover {
+				@if $transitionDuration {
+					@include transition-duration(0s);
+				}
+
+				@include opacity($targetOpacity);
+			}
+		} @else {
+			&.highlight,
+			.touch &:active,
+			.no-touch &:hover {
+				@if $transitionDuration {
+					@include transition-duration(0s);
+				}
+
+				@include opacity($targetOpacity);
+			}
+		}
+	} @else {
+		&.highlight,
+		.no-touch &:hover {
+			@if $transitionDuration {
+				@include transition-duration(0s);
+			}
+
+			@include opacity($targetOpacity);
+		}
+	}
+}
+
+@mixin button-with-border($color) {
+	@include box-sizing(border-box);
+	display: inline-block;
+
+	font-size: 22px;
+	line-height: 1;
+	font-weight: $semibold;
+	text-align: center;
+	
+	height: 50px;
+	min-width: 300px;
+	
+	padding: 10px;
+	padding-left: 40px;
+	padding-right: 40px;
+	
+	color: $color;
+	border: 3px solid $color;
+}
+
+@mixin head($multiLine: false) {
+	font-family: 'Whitney Narrow';
+	font-size: 80px;
+	line-height: 60px;
+
+	@if $multiLine {
+		line-height: 82px;
+	}
+}
+
+@mixin subhead($multiLine: false) {
+	font-size: 30px;
+	line-height: 22px;
+
+	@if $multiLine {
+		line-height: 36px;
+	}
+}
