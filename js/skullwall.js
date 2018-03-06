@@ -1,3 +1,7 @@
+Math.randomRange = function (low, high) {
+	return (Math.random() * (high - low)) + low;
+}
+
 // @see
 // https://github.com/stevenwanderski/bxslider-4
 // http://fancyapps.com/fancybox/3/docs/
@@ -642,13 +646,25 @@ var SkullWall = function () {
 			$('html').removeClass('expanding');
 			$('html').removeClass(_activeSlideClass);
 			$('section').first().removeClass('collapsed');
+
+			$('html').addClass('attract');
+			$('section').on('transitionend', _onAttractIteration);
+			$('section').trigger('transitionend');
     	});
 
     	$(document).on('active.idleTimer', function (event, elem, obj, triggerevent) {
     		console.log('active.idleTimer');
+    		
+    		$('section').off('transitionend');
+    		$('section').removeClass('fade-out');
+    		$('html').removeClass('attract');
     	});
 
     	window.addEventListener('message', _onSketchfabInteraction, false);
+	}
+
+	var _onAttractIteration = function (e) {
+		$(this).toggleClass('fade-out');
 	}
 
 	var _onSketchfabInteraction = function (e) {
