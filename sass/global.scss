@@ -222,24 +222,16 @@ body {
 		section {
 			.attract & {
 				&#wall {
-					@include transition(
-						opacity 3.2s $easing 2s,
-						transform 3s $easing 2s
+					@include animation(
+						fade-outAlt 8s $easing infinite,
+						scale-downAlt 8s $easing infinite
 					);
 				}
 				&#behind {
-					@include transition(
-						opacity 3.1s $easing 2.1s,
-						transform 2.9s $easing 2.1s
+					@include animation(
+						fade-out 8s $easing infinite,
+						scale-down 8s $easing infinite
 					);
-				}
-
-				@include opacity(1);
-				@include transform(scale(1));
-
-				&.fade-out {
-					@include opacity(0);
-					@include transform(scale(.985));
 				}
 			}
 
