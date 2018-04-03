@@ -664,7 +664,8 @@ var SkullWall = function () {
 		}
 	}
 
-	this.initialize = function () {
+	var _onData = function (e, data) {
+		console.log(data);
 		_initImageZoom();
 		
 		// _configThumbnailPositions();
@@ -675,6 +676,18 @@ var SkullWall = function () {
 		_initNav();
 
 		_initIdleTimer();
+	}
+
+	var _onDataError = function () {
+		console.log('_onDataError');
+	}
+
+	this.initialize = function () {
+		$(document).off('skullwallmodel');
+		$(document).on('skullwallmodel.error', _onDataError);
+		$(document).on('skullwallmodel.success', _onData);
+
+		var foo = new SkullWallModel();
 	}
 
 	this.initialize();
