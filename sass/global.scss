@@ -80,7 +80,7 @@ body {
 			@include buttony;
 		}
 
-		.photo-credit,
+		.photocredit,
 		.caption {
 			font-size: 14px;
 			line-height: 16px;
@@ -967,7 +967,7 @@ body {
 
 							// hack for fixing disappearing slider items
 							&,
-							.photo-credit,
+							.photocredit,
 							.model-button-container,
 							button,
 							video {
@@ -984,7 +984,7 @@ body {
 
 								overflow: visible;
 
-								.photo-credit {
+								.photocredit {
 									position: absolute;
 									bottom: -28px;
 								}
@@ -1111,5 +1111,13 @@ body {
 				}
 			}
 		}
+	}
+
+	.en, .cn, .tl, .es {
+		display: none;
+	}
+
+	.en {
+		display: block;
 	}
 }

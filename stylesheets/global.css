@@ -497,7 +497,7 @@ body #root button.highlight, .touch body #root button:active, .no-touch body #ro
   opacity: 0.7;
 }
 /* line 83, ../sass/global.scss */
-body #root .photo-credit,
+body #root .photocredit,
 body #root .caption {
   font-size: 14px;
   line-height: 16px;
@@ -1464,7 +1464,7 @@ body #root section#behind .content .container .col.info p {
 }
 /* line 969, ../sass/global.scss */
 body #root section#behind .content .container .col,
-body #root section#behind .content .container .col .photo-credit,
+body #root section#behind .content .container .col .photocredit,
 body #root section#behind .content .container .col .model-button-container,
 body #root section#behind .content .container .col button,
 body #root section#behind .content .container .col video {
@@ -1485,7 +1485,7 @@ body #root section#behind .content .container .col.image {
   overflow: visible;
 }
 /* line 987, ../sass/global.scss */
-body #root section#behind .content .container .col.image .photo-credit {
+body #root section#behind .content .container .col.image .photocredit {
   position: absolute;
   bottom: -28px;
 }
@@ -1639,4 +1639,12 @@ body #root section#behind .content .container .col .model-button-container butto
 body #root section#behind .content .container .col .model-button-container button.highlight, .touch body #root section#behind .content .container .col .model-button-container button:active, .no-touch body #root section#behind .content .container .col .model-button-container button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
+}
+/* line 1116, ../sass/global.scss */
+body .en, body .cn, body .tl, body .es {
+  display: none;
+}
+/* line 1120, ../sass/global.scss */
+body .en {
+  display: block;
 }

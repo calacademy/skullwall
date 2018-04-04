@@ -8,6 +8,7 @@ Math.randomRange = function (low, high) {
 
 var SkullWall = function () {
 	var _activeSection;
+	var _translate;
 	var _activeSlideClass = '';
 	var _media = new SkullWallMedia();
 	var _selectEvent = Modernizr.touch ? 'touchend' : 'click';
@@ -664,8 +665,12 @@ var SkullWall = function () {
 		}
 	}
 
+	var _initTranslate = function (data) {
+		_translate = new SkullWallTranslate(data);
+	}
+
 	var _onData = function (e, data) {
-		console.log(data);
+		_initTranslate(data);
 		_initImageZoom();
 		
 		// _configThumbnailPositions();
@@ -679,6 +684,7 @@ var SkullWall = function () {
 	}
 
 	var _onDataError = function () {
+		$(document).off('skullwallmodel');
 		console.log('_onDataError');
 	}
 

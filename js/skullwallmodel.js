@@ -17,8 +17,32 @@ var SkullWallModel = function () {
 		$(document).trigger('skullwallmodel.error');
 	}
 
+	var _getSlug = function (str) {
+		str = $.trim(str).toLowerCase();
+		str = str.replace(/[^0-9a-z\s]/gi, '');
+		return str.replace(/\s/g, '-');
+	}
+
+	var _getSluggifiedData = function (key, data) {
+		$.each(data, function (i, obj) {
+			if (obj.title_en) {
+				obj.slug = _getSlug(obj.title_en);
+			} else {
+				obj.slug = _getSlug(obj.title);	
+			}
+
+			if (obj.buttons) {
+				$.each(obj.buttons, function (i, btn) {
+					btn.slug = _getSlug(btn.en.safe_value);
+				});
+			}
+		});
+
+		return data;
+	}
+
 	var _onData = function (key, data) {
-		_data[key] = data;
+		_data[key] = _getSluggifiedData(key, data);
 
 		var success = true;
 
