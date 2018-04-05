@@ -1640,11 +1640,76 @@ body #root section#behind .content .container .col .model-button-container butto
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 1116, ../sass/global.scss */
-body .en, body .cn, body .tl, body .es {
+/* line 1117, ../sass/global.scss */
+body #loading {
+  position: absolute;
+  display: table;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #434244;
+}
+/* line 1128, ../sass/global.scss */
+body #loading h1 {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 60px;
+  font-weight: 400;
+  color: #ffffff;
+  padding-bottom: 30px;
+}
+/* line 1139, ../sass/global.scss */
+body #root {
   display: none;
 }
-/* line 1120, ../sass/global.scss */
-body .en {
+/* line 1144, ../sass/global.scss */
+.loaded body #loading {
+  display: none;
+}
+/* line 1148, ../sass/global.scss */
+.loaded body #root {
   display: block;
+}
+/* line 1154, ../sass/global.scss */
+body .en, body .cn, body .tl, body .es {
+  display: none !important;
+  -moz-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+/* line 1161, ../sass/global.scss */
+html[lang="en"] body .en {
+  display: block !important;
+}
+/* line 1166, ../sass/global.scss */
+html[lang="en"] body .carousel-buttons .en {
+  display: table-cell !important;
+}
+/* line 1161, ../sass/global.scss */
+html[lang="cn"] body .cn {
+  display: block !important;
+}
+/* line 1166, ../sass/global.scss */
+html[lang="cn"] body .carousel-buttons .cn {
+  display: table-cell !important;
+}
+/* line 1161, ../sass/global.scss */
+html[lang="tl"] body .tl {
+  display: block !important;
+}
+/* line 1166, ../sass/global.scss */
+html[lang="tl"] body .carousel-buttons .tl {
+  display: table-cell !important;
+}
+/* line 1161, ../sass/global.scss */
+html[lang="es"] body .es {
+  display: block !important;
+}
+/* line 1166, ../sass/global.scss */
+html[lang="es"] body .carousel-buttons .es {
+  display: table-cell !important;
 }

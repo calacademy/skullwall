@@ -671,6 +671,8 @@ var SkullWall = function () {
 
 	var _onData = function (e, data) {
 		_initTranslate(data);
+		$('html').addClass('loaded');
+
 		_initImageZoom();
 		
 		// _configThumbnailPositions();
@@ -685,7 +687,7 @@ var SkullWall = function () {
 
 	var _onDataError = function () {
 		$(document).off('skullwallmodel');
-		console.log('_onDataError');
+		$('#loading h1').html('This exhibit is being updated.');
 	}
 
 	this.initialize = function () {

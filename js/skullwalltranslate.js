@@ -98,7 +98,7 @@ var SkullWallTranslate = function (data) {
 		});
 
 		// section titles
-		_populateSectionTitles(['title', 'subtitle'], $('#wall .misc'));
+		_populateSectionTitles(['title', 'subtitle'], $('#wall header .misc'));
 		_populateSectionTitles(['bts_title', 'bts_subtitle'], $('#behind .misc'));
 		_populateSectionTitles(['sti_title', 'sti_body', 'sti_cta'], $('.imposter.misc'));
 	}
@@ -117,12 +117,28 @@ var SkullWallTranslate = function (data) {
 		});
 	}
 
+	var _onLgSelect = function (e) {
+		$('#languages li').removeClass('active');
+		$(e.target).addClass('active');
+
+		$('html').attr('lang', $(e.target).attr('id'));
+
+		return false;
+	}
+
+	var _initInteraction = function () {
+		var event = Modernizr.touch ? 'touchend' : 'click';
+		$('#languages li').on(event, _onLgSelect);
+	}
+
 	this.initialize = function () {
 		console.log(data);
 		
 		_populateMisc();
 		_populateSpecimens();
 		_populateSlides();
+
+		_initInteraction();
 	}
 
 	this.initialize();
