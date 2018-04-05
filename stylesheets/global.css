@@ -437,7 +437,7 @@ body {
   padding: 0;
   min-height: 100%;
   font-weight: 400;
-  background-color: #999999;
+  background-color: #434244;
   color: #ffffff;
 }
 /* line 29, ../sass/global.scss */
@@ -1650,9 +1650,8 @@ body #loading {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: #434244;
 }
-/* line 1128, ../sass/global.scss */
+/* line 1127, ../sass/global.scss */
 body #loading h1 {
   display: table-cell;
   vertical-align: middle;
@@ -1662,54 +1661,54 @@ body #loading h1 {
   color: #ffffff;
   padding-bottom: 30px;
 }
-/* line 1139, ../sass/global.scss */
+/* line 1138, ../sass/global.scss */
 body #root {
   display: none;
 }
-/* line 1144, ../sass/global.scss */
+/* line 1143, ../sass/global.scss */
 .loaded body #loading {
   display: none;
 }
-/* line 1148, ../sass/global.scss */
+/* line 1147, ../sass/global.scss */
 .loaded body #root {
   display: block;
 }
-/* line 1154, ../sass/global.scss */
+/* line 1153, ../sass/global.scss */
 body .en, body .cn, body .tl, body .es {
   display: none !important;
   -moz-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 1161, ../sass/global.scss */
+/* line 1160, ../sass/global.scss */
 html[lang="en"] body .en {
   display: block !important;
 }
-/* line 1166, ../sass/global.scss */
+/* line 1165, ../sass/global.scss */
 html[lang="en"] body .carousel-buttons .en {
   display: table-cell !important;
 }
-/* line 1161, ../sass/global.scss */
+/* line 1160, ../sass/global.scss */
 html[lang="cn"] body .cn {
   display: block !important;
 }
-/* line 1166, ../sass/global.scss */
+/* line 1165, ../sass/global.scss */
 html[lang="cn"] body .carousel-buttons .cn {
   display: table-cell !important;
 }
-/* line 1161, ../sass/global.scss */
+/* line 1160, ../sass/global.scss */
 html[lang="tl"] body .tl {
   display: block !important;
 }
-/* line 1166, ../sass/global.scss */
+/* line 1165, ../sass/global.scss */
 html[lang="tl"] body .carousel-buttons .tl {
   display: table-cell !important;
 }
-/* line 1161, ../sass/global.scss */
+/* line 1160, ../sass/global.scss */
 html[lang="es"] body .es {
   display: block !important;
 }
-/* line 1166, ../sass/global.scss */
+/* line 1165, ../sass/global.scss */
 html[lang="es"] body .carousel-buttons .es {
   display: table-cell !important;
 }
