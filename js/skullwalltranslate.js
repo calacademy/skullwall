@@ -1,5 +1,6 @@
 var SkullWallTranslate = function (data) {
 	var _languages = ['en', 'cn', 'tl', 'es'];
+	var _event = Modernizr.touch ? 'touchend' : 'click';
 
 	var _populateSpecimens = function () {
 		$.each(data.specimens, function (i, obj) {
@@ -127,8 +128,11 @@ var SkullWallTranslate = function (data) {
 	}
 
 	var _initInteraction = function () {
-		var event = Modernizr.touch ? 'touchend' : 'click';
-		$('#languages li').on(event, _onLgSelect);
+		$('#languages li').on(_event, _onLgSelect);
+	}
+
+	this.reset = function () {
+		$('#languages #en').trigger(_event);
 	}
 
 	this.initialize = function () {

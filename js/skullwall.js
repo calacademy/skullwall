@@ -632,8 +632,9 @@ var SkullWall = function () {
 
 			console.log('idle.idleTimer');
 
-			// @todo
-			// reset to English
+			if (_translate) {
+				_translate.reset();
+			}
 
 			_media.destroy();
 			$.fancybox.close(true);

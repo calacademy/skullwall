@@ -1,7 +1,7 @@
 var SkullWallModel = function () {
 	var _endpoint = 'https://giants.calacademy.org/rest/';
 	var _callbackData = { callback: '_jqjsp' };
-	var _timeout = 12000;
+	var _timeout = 30000;
 
 	var _data = {
 		'slides': 'skull-wall-slides',
