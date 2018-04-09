@@ -123,7 +123,12 @@ var SkullWall = function () {
 		return false;
 	}
 
+	var _isBTSOpen = function () {
+		return ($('html').hasClass('behind-active') && $('html').hasClass('content-open'));
+	}
+
 	var _onNav = function (e) {
+		if (_isBTSOpen()) return false;
 		if (_isSliding()) return false;
 
 		var section = $(this).closest('section');
@@ -683,7 +688,9 @@ var SkullWall = function () {
 		_initCarouselNav();
 		_initNav();
 
-		_initIdleTimer();
+		if (!SKULLWALL_CONFIG.isDev) {
+			_initIdleTimer();
+		}
 	}
 
 	var _onDataError = function () {

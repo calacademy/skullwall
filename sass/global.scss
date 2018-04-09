@@ -471,6 +471,11 @@ body {
 
 			&#wall {
 				header {
+					h1 {
+						// overflow is trimming the top a bit
+						margin-top: 4px;
+					}
+
 					h2 {
 						@include animation(fade-in .4s $easing);
 					}

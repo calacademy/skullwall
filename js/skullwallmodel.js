@@ -74,7 +74,7 @@ var SkullWallModel = function () {
 		$.each(_data, function (key, val) {
 			var url = _endpoint + val + '.jsonp';
 			
-			if ($.trim(window.location.hash) == '#dev') {
+			if (SKULLWALL_CONFIG.isDev) {
 				url = 'jsonp/' + key + '.jsonp';
 			}
 
