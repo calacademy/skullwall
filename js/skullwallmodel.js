@@ -1,7 +1,7 @@
 var SkullWallModel = function () {
 	var _endpoint = 'https://giants.calacademy.org/rest/';
 	var _callbackData = { callback: '_jqjsp' };
-	var _timeout = 30000;
+	var _timeout = 60000;
 
 	var _data = {
 		'slides': 'skull-wall-slides',
@@ -62,7 +62,7 @@ var SkullWallModel = function () {
 		$.jsonp({
 			timeout: _timeout,
 			data: _callbackData,
-			url: _endpoint + path + '.jsonp',
+			url: path,
 			success: function (data, textStatus) {
 				success(data);
 			},
@@ -72,7 +72,13 @@ var SkullWallModel = function () {
 
 	this.initialize = function () {
 		$.each(_data, function (key, val) {
-			_requestJsonp(val, function (data) {
+			var url = _endpoint + val + '.jsonp';
+			
+			if ($.trim(window.location.hash) == '#dev') {
+				url = 'jsonp/' + key + '.jsonp';
+			}
+
+			_requestJsonp(url, function (data) {
 				_onData(key, data);
 			});
 		});
