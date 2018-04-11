@@ -8,10 +8,13 @@ var SkullWallMedia = function () {
 		$(document).trigger('videoended');
 	}
 
-	var _showSubtitles = function (video) {
+	this.showSubtitles = function (lg) {
+		if (typeof(lg) != 'string') lg = $('html').attr('lang');
+		var video = $('video').get(0);
+
 		if (video.textTracks) {
 			$.each(video.textTracks, function (i, track) {
-				if (track.language == 'en') {
+				if (track.language == lg) {
 					track.mode = 'showing';
 				} else {
 					track.mode = 'hidden';
@@ -65,18 +68,18 @@ var SkullWallMedia = function () {
 		$('html').addClass('media');
 	}
 
-	this.playInlineVideo = function (video) {
+	this.playInlineVideo = function (video, lg) {
 		video.off('ended');
 		video.on('ended', _onVideoEnded);
 
 		_initProgressIndicator(video);
 		video.get(0).play();
-		_showSubtitles(video.get(0));
+		this.showSubtitles(lg);
 
 		$('html').addClass('video-playing');
 	}
 
-	this.playVideo = function (src) {
+	this.playVideo = function (src, lg) {
 		var video = $('<video />');
 		video.attr('src', src);
 
@@ -86,7 +89,7 @@ var SkullWallMedia = function () {
 		
 		_initProgressIndicator(video);
 		video.get(0).play();
-		_showSubtitles(video.get(0));
+		this.showSubtitles(lg);
 	}
 
 	this.destroy = function () {

@@ -123,6 +123,7 @@ var SkullWallTranslate = function (data) {
 		$(e.target).addClass('active');
 
 		$('html').attr('lang', $(e.target).attr('id'));
+		$(document).trigger('languagechange');
 
 		return false;
 	}
