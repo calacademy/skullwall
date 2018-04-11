@@ -688,7 +688,7 @@ var SkullWall = function () {
 		_initCarouselNav();
 		_initNav();
 
-		if (!SKULLWALL_CONFIG.isDev) {
+		if (!SKULLWALL_CONFIG.isDev && !SKULLWALL_CONFIG.noIdleTimeout) {
 			_initIdleTimer();
 		}
 	}

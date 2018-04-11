@@ -470,10 +470,21 @@ body {
 			}
 
 			&#wall {
+				&.collapsed {
+					.index-column {
+						@include box-sizing(border-box);
+						padding-right: 20px;
+					}
+				}
+
 				header {
 					h1 {
 						// overflow is trimming the top a bit
 						margin-top: 4px;
+
+						html[lang="cn"] & {
+							margin-top: 12px;
+						}
 					}
 
 					h2 {
@@ -606,6 +617,22 @@ body {
 					}
 
 					height: 250px;
+				}
+
+				html[lang="es"].shrink-wall &,
+				html[lang="tl"].shrink-wall & {
+					header {
+						h1 {
+							font-size: 60px;
+							line-height: 50px;
+						}
+
+						h2 {
+							line-height: 32px;
+							margin-top: 20px;
+							margin-bottom: 20px;
+						}
+					}
 				}
 
 				&.open.subnav-open {
