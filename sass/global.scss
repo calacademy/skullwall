@@ -893,6 +893,12 @@ body {
 									color: $blueDark;
 									@include subhead(true);
 									font-weight: $book;
+
+									html[lang="tl"] & {
+										padding-top: 20px;
+										font-size: 28px;
+										line-height: 32px;
+									}
 								}
 							}
 						}
