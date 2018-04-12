@@ -48,6 +48,12 @@ body {
 		outline: none;
 	}
 
+	html[lang="cn"] & ::cue,
+	.cn,
+	.cn * {
+		font-family: 'HanSans', Helvetica, Arial, sans-serif;
+	}
+
 	i,
 	em {
 		font-style: italic;
@@ -480,11 +486,7 @@ body {
 				header {
 					h1 {
 						// overflow is trimming the top a bit
-						margin-top: 4px;
-
-						html[lang="cn"] & {
-							margin-top: 12px;
-						}
+						margin-top: 6px;
 					}
 
 					h2 {
@@ -623,14 +625,12 @@ body {
 				html[lang="tl"].shrink-wall & {
 					header {
 						h1 {
-							font-size: 60px;
-							line-height: 50px;
+							font-size: 55px;
+							line-height: 1;
 						}
 
 						h2 {
 							line-height: 32px;
-							margin-top: 20px;
-							margin-bottom: 20px;
 						}
 					}
 				}
