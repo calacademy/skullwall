@@ -1,15 +1,14 @@
 ::cue {
 	background: none;
-	@include text-shadow(#000000 0 0 20px);
+	@include text-shadow(#000000 0 0 12px);
 }
 
 ::-webkit-media-text-track-container {
-	@include box-sizing(border-box);
-	border: 25px solid transparent;
+	@include background-image(linear-gradient(-180deg, transparent 60%, rgba(0, 0, 0, .8)));
 }
 
 ::-webkit-media-text-track-display {
 	color: #ffffff;
 	font-size: 40px;
-	// padding: 40px;
+	padding: 40px;
 }
