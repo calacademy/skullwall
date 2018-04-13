@@ -3,22 +3,49 @@ var SkullWallMedia = function () {
 	var _prog;
 
 	var _onVideoEnded = function (e) {
+		_removeCueChangeListeners();
+		
 		$(this).get(0).load();
 		$('html').removeClass('video-playing');
 		$(document).trigger('videoended');
 	}
 
-	this.showSubtitles = function (lg) {
-		if (typeof(lg) != 'string') lg = $('html').attr('lang');
+	var _onCueChange = function (e) {
+		var cue = this.activeCues[0];
+		
+		if (cue) {
+			var container = $('.caption-container .' + this.language);
+			container.html('<p>' + cue.text + '</p>');
+
+			// console.log(this.language + ': ' + cue.text);		
+		}
+	}
+
+	var _removeCueChangeListeners = function () {
 		var video = $('video').get(0);
 
 		if (video.textTracks) {
 			$.each(video.textTracks, function (i, track) {
-				if (track.language == lg) {
-					track.mode = 'showing';
-				} else {
-					track.mode = 'hidden';
-				}
+				$(track).off();
+			});
+		}
+	}
+
+	var _initCustomCaptions = function () {
+		_removeCueChangeListeners();
+		$('.caption-container').empty();
+
+		var video = $('video').get(0);
+
+		if (video.textTracks) {
+			$.each(video.textTracks, function (i, track) {
+				track.mode = 'hidden';
+
+				var div = $('<div />');
+				div.addClass(track.language);
+				$('.caption-container').append(div);
+
+				$(track).on('cuechange', _onCueChange);
 			});
 		}
 	}
@@ -73,8 +100,9 @@ var SkullWallMedia = function () {
 		video.on('ended', _onVideoEnded);
 
 		_initProgressIndicator(video);
+		_initCustomCaptions();
+
 		video.get(0).play();
-		this.showSubtitles(lg);
 
 		$('html').addClass('video-playing');
 	}
@@ -89,10 +117,11 @@ var SkullWallMedia = function () {
 		
 		_initProgressIndicator(video);
 		video.get(0).play();
-		this.showSubtitles(lg);
 	}
 
 	this.destroy = function () {
+		_removeCueChangeListeners();
+
 		$('video').off('timeupdate');
 		$('video').off('ended');
 		

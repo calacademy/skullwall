@@ -698,19 +698,10 @@ var SkullWall = function () {
 		$('#loading h1').html('This exhibit is being updated.');
 	}
 
-	var _onLanguageChange = function () {
-		if (_media) {
-			var lg = $('html').attr('lang');
-			_media.showSubtitles(lg);
-		}
-	}
-
 	this.initialize = function () {
 		$(document).off('skullwallmodel');
 		$(document).on('skullwallmodel.error', _onDataError);
 		$(document).on('skullwallmodel.success', _onData);
-
-		$(document).on('languagechange', _onLanguageChange);
 
 		var foo = new SkullWallModel();
 	}
