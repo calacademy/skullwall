@@ -703,6 +703,9 @@ var SkullWall = function () {
 		$(document).on('skullwallmodel.error', _onDataError);
 		$(document).on('skullwallmodel.success', _onData);
 
+		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
+		$('.cn-sample').first().clone().addClass('semibold').appendTo('#preload');
+
 		var foo = new SkullWallModel();
 	}
 

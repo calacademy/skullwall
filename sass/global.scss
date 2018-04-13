@@ -28,6 +28,13 @@ body {
 	#preload {
 		position: absolute;
 		left: -9999999px;
+
+		.medium {
+			font-weight: $medium;
+		}
+		.semibold {
+			font-weight: $semibold;
+		}
 	}
 
 	.fancybox-container {
@@ -47,6 +54,7 @@ body {
 		outline: none;
 	}
 
+	#preload,
 	html[lang="cn"] & ::cue,
 	.cn,
 	.cn * {
@@ -94,8 +102,7 @@ body {
 			color: #000000;
 		}
 
-		#languages,
-		#languages-font-preload {
+		#languages {
 		    background-color: #000000;
 		    width: 100%;
 		    overflow: hidden;
@@ -131,11 +138,6 @@ body {
         			pointer-events: none;
 		    	}
 		    }
-		}
-
-		#languages-font-preload {
-			position: absolute;
-			left: -999999px;
 		}
 
 		#close {
