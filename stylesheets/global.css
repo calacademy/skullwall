@@ -555,17 +555,17 @@ body #root #close {
   position: absolute;
   text-indent: -999px;
   overflow: hidden;
-  width: 160px;
-  height: 120px;
+  width: 162px;
+  height: 122px;
   background-color: transparent;
   border: none;
   background-image: url("../images/icons/close-white.svg");
   background-repeat: no-repeat;
   background-position: 50px 30px;
-  -moz-background-size: 60px 60px;
-  -o-background-size: 60px 60px;
-  -webkit-background-size: 60px 60px;
-  background-size: 60px 60px;
+  -moz-background-size: 62px 62px;
+  -o-background-size: 62px 62px;
+  -webkit-background-size: 62px 62px;
+  background-size: 62px 62px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   pointer-events: none;
@@ -877,12 +877,12 @@ body #root section .carousel-buttons > div a {
   color: #003a70;
   text-decoration: none;
   font-size: 24px;
-  height: 86px;
+  height: 88px;
   background-repeat: no-repeat;
-  -moz-background-size: 43px 43px;
-  -o-background-size: 43px 43px;
-  -webkit-background-size: 43px 43px;
-  background-size: 43px 43px;
+  -moz-background-size: 44px 44px;
+  -o-background-size: 44px 44px;
+  -webkit-background-size: 44px 44px;
+  background-size: 44px 44px;
 }
 /* line 26, ../sass/_mixins.scss */
 body #root section .carousel-buttons > div a.highlight, .touch body #root section .carousel-buttons > div a:active, .no-touch body #root section .carousel-buttons > div a:hover {
@@ -903,9 +903,9 @@ body #root section .carousel-buttons > div.prev {
 }
 /* line 463, ../sass/global.scss */
 body #root section .carousel-buttons > div.prev a {
-  padding-left: 58px;
+  padding-left: 59px;
   padding-right: 25px;
-  background-image: url("../images/icons/previous-blue.png");
+  background-image: url("../images/icons/previous-blue.svg");
   background-position: center left;
 }
 /* line 470, ../sass/global.scss */
@@ -914,9 +914,9 @@ body #root section .carousel-buttons > div.next {
 }
 /* line 473, ../sass/global.scss */
 body #root section .carousel-buttons > div.next a {
-  padding-right: 58px;
+  padding-right: 59px;
   padding-left: 25px;
-  background-image: url("../images/icons/next-blue.png");
+  background-image: url("../images/icons/next-blue.svg");
   background-position: center right;
 }
 /* line 483, ../sass/global.scss */
@@ -1214,16 +1214,16 @@ body #root section#wall .content .container .col .image button {
   position: absolute;
   top: 0;
   right: 0;
-  width: 63px;
-  height: 63px;
+  width: 64px;
+  height: 64px;
   overflow: hidden;
   text-indent: -999px;
-  background-image: url("../images/icons/expand.png");
+  background-image: url("../images/icons/expand.svg");
   background-repeat: no-repeat;
-  -moz-background-size: 43px 43px;
-  -o-background-size: 43px 43px;
-  -webkit-background-size: 43px 43px;
-  background-size: 43px 43px;
+  -moz-background-size: 44px 44px;
+  -o-background-size: 44px 44px;
+  -webkit-background-size: 44px 44px;
+  background-size: 44px 44px;
   background-position: center;
   padding: 10px;
 }
