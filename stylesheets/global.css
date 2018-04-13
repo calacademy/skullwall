@@ -450,7 +450,7 @@ body, body *, body ::cue {
   outline: none;
 }
 /* line 57, ../sass/global.scss */
-body #preload, html[lang="cn"] body ::cue,
+body #preload div, html[lang="cn"] body ::cue,
 body .cn,
 body .cn * {
   font-family: 'HanSans', Helvetica, Arial, sans-serif;
