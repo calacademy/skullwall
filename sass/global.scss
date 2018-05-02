@@ -22,8 +22,8 @@ html {
 
 body {
 	// curly quotes
-	-webkit-font-feature-settings: 'ss17' 1;
-	font-feature-settings: 'ss17' 1;
+	-webkit-font-feature-settings: 'ss17' 1, 'onum' 1;
+	font-feature-settings: 'ss17' 1, 'onum' 1;
 
 	#preload {
 		position: absolute;

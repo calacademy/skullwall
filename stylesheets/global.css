@@ -411,8 +411,8 @@ html {
 
 /* line 23, ../sass/global.scss */
 body {
-  -webkit-font-feature-settings: 'ss17' 1;
-  font-feature-settings: 'ss17' 1;
+  -webkit-font-feature-settings: 'ss17' 1, 'onum' 1;
+  font-feature-settings: 'ss17' 1, 'onum' 1;
   margin: 0;
   padding: 0;
   min-height: 100%;
