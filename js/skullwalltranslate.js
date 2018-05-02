@@ -102,6 +102,12 @@ var SkullWallTranslate = function (data) {
 		_populateSectionTitles(['title', 'subtitle'], $('#wall header .misc'));
 		_populateSectionTitles(['bts_title', 'bts_subtitle'], $('#behind .misc'));
 		_populateSectionTitles(['sti_title', 'sti_body', 'sti_cta'], $('.imposter.misc'));
+
+		// caption files
+		$('video track').each(function () {
+			var lg = $(this).attr('srclang');
+			$(this).attr('src', dataObj['vtt_' + lg] + '?nocache=' + Math.random());
+		});
 	}
 
 	var _populateSectionTitles = function (fields, el) {
