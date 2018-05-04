@@ -149,6 +149,11 @@ var SkullWallTranslate = function (data) {
 		_populateSpecimens();
 		_populateSlides();
 
+		// unwrap any links
+		$.each(_languages, function (i, lg) {
+			$('.' + lg + ' a').contents().unwrap();
+		});
+
 		_initInteraction();
 	}
 
