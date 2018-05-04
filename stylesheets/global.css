@@ -699,9 +699,16 @@ body #root section header h1, body #root section header h2 {
 }
 /* line 290, ../sass/global.scss */
 body #root section header h1 {
-  font-family: 'Whitney Narrow';
   font-size: 80px;
   line-height: 60px;
+}
+/* line 69, ../sass/_mixins.scss */
+body #root section header h1, body #root section header h1 div {
+  font-family: 'Whitney Narrow';
+}
+/* line 73, ../sass/_mixins.scss */
+body #root section header h1 .cn {
+  font-family: 'HanSans';
 }
 /* line 293, ../sass/global.scss */
 body #root section header h2 {
@@ -807,10 +814,17 @@ body #root section .content .container {
 /* line 379, ../sass/global.scss */
 body #root section .content .container h1 {
   color: #009cde;
-  font-family: 'Whitney Narrow';
   font-size: 80px;
   line-height: 60px;
   line-height: 82px;
+}
+/* line 69, ../sass/_mixins.scss */
+body #root section .content .container h1, body #root section .content .container h1 div {
+  font-family: 'Whitney Narrow';
+}
+/* line 73, ../sass/_mixins.scss */
+body #root section .content .container h1 .cn {
+  font-family: 'HanSans';
 }
 /* line 383, ../sass/global.scss */
 body #root section .content .container h2 {
@@ -1248,10 +1262,17 @@ body #root section#wall .content .container.imposter .col.title {
 }
 /* line 778, ../sass/global.scss */
 body #root section#wall .content .container.imposter .col.title h1 {
-  font-family: 'Whitney Narrow';
   font-size: 80px;
   line-height: 60px;
   line-height: 82px;
+}
+/* line 69, ../sass/_mixins.scss */
+body #root section#wall .content .container.imposter .col.title h1, body #root section#wall .content .container.imposter .col.title h1 div {
+  font-family: 'Whitney Narrow';
+}
+/* line 73, ../sass/_mixins.scss */
+body #root section#wall .content .container.imposter .col.title h1 .cn {
+  font-family: 'HanSans';
 }
 /* line 782, ../sass/global.scss */
 body #root section#wall .content .container.imposter .col.body {
