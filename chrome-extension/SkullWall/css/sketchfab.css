@@ -1,4 +1,7 @@
 .watermark,
+.gui,
+.widget,
+.viewer-hint,
 .overlay.help {
     display: none !important;
 }
