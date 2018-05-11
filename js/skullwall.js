@@ -703,6 +703,9 @@ var SkullWall = function () {
 		$(document).on('skullwallmodel.error', _onDataError);
 		$(document).on('skullwallmodel.success', _onData);
 
+		// glyphs
+		$('.en-sample').first().clone().addClass('medium').appendTo('#preload');
+		$('.en-sample').first().clone().addClass('semibold').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('semibold').appendTo('#preload');
 
