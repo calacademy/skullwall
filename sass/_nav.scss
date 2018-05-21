@@ -1,0 +1,52 @@
+#languages {
+	$topPadding: 12px;
+
+    background-color: $black;
+    width: 100%;
+    overflow: hidden;
+    clear: both;
+    
+    line-height: 1;
+    letter-spacing: 1.25px;
+
+    &, li, span {
+    	@include box-sizing(border-box);
+    	height: $translationUIHeight;
+    }
+
+    li {
+    	float: right;
+    	width: 209px;
+    	border-left: 1px solid #ffffff;
+
+	    text-transform: uppercase;
+	    color: $translateTextColor;
+
+	    span {
+	    	@include buttony;
+			display: block;
+			text-align: center;
+			padding-top: $topPadding;
+
+			font-size: 23px;
+	    	font-family: 'Whitney Condensed';
+	    	font-weight: $medium;
+		}
+
+    	&#cn {
+    		span {
+    			padding-top: $topPadding - 3px;
+    			font-family: 'HanSans';
+    		}
+    	}
+
+    	&.active {
+			color: $white;
+			pointer-events: none;
+
+			span {
+				font-weight: $semibold;
+			}
+    	}
+    }
+}

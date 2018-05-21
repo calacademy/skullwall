@@ -12,6 +12,8 @@ var SkullWall = function () {
 	var _activeSlideClass = '';
 	var _media = new SkullWallMedia();
 	var _selectEvent = Modernizr.touch ? 'touchend' : 'click';
+	var _overEvent = Modernizr.touch ? 'touchstart' : 'mouseover';
+	var _outEvent = Modernizr.touch ? 'touchend' : 'mouseout click';
 	var _debug = (window.location.hash == '#debug');
 
 	var _stopPropagation = function (e) {
@@ -708,6 +710,16 @@ var SkullWall = function () {
 		$('.en-sample').first().clone().addClass('semibold').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('semibold').appendTo('#preload');
+
+		$('#languages li').contents().wrap('<span />');
+		
+		$('#languages span').on(_overEvent, function () {
+			$(this).addClass('highlight');
+		});
+
+		$('#languages span').on(_outEvent, function () {
+			$(this).removeClass('highlight');
+		});
 
 		var foo = new SkullWallModel();
 	}

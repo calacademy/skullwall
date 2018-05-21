@@ -126,9 +126,9 @@ var SkullWallTranslate = function (data) {
 
 	var _onLgSelect = function (e) {
 		$('#languages li').removeClass('active');
-		$(e.target).addClass('active');
+		$(this).addClass('active');
 
-		$('html').attr('lang', $(e.target).attr('id'));
+		$('html').attr('lang', $(this).attr('id'));
 		$(document).trigger('languagechange');
 
 		return false;
