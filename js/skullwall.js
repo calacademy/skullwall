@@ -24,6 +24,8 @@ var SkullWall = function () {
 
 	var _isSliding = function () {
 		if (_activeSection) {
+			if (!_activeSection.hasClass('open')) return false;
+			
 			var slider = _activeSection.find('.slides').data('bxSlider');
 
 			if (slider) {
