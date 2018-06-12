@@ -86,6 +86,8 @@
     onSliderLoad: function() { return true; },
     onSlideBefore: function() { return true; },
     onSlideAfter: function() { return true; },
+    onTouchMove: function() { return true; },
+    onTouchEnd: function() { return true; },
     onSlideNext: function() { return true; },
     onSlidePrev: function() { return true; },
     onSliderResize: function() { return true; },
@@ -415,6 +417,7 @@
     var getSlideWidth = function() {
       var newElWidth = slider.settings.slideWidth, // start with any user-supplied slide width
       wrapWidth      = slider.viewport.width();    // get the current viewport width
+
       // if slide width was not supplied, or is larger than the viewport use the viewport width
       if (slider.settings.slideWidth === 0 ||
         (slider.settings.slideWidth > wrapWidth && !slider.carousel) ||
@@ -430,6 +433,7 @@
           newElWidth = Math.floor((wrapWidth + slider.settings.slideMargin) / (Math.ceil((wrapWidth + slider.settings.slideMargin) / (newElWidth + slider.settings.slideMargin))) - slider.settings.slideMargin);
         }
       }
+
       return newElWidth;
     };
 
@@ -1222,6 +1226,9 @@
           value = slider.touch.originalPos.top + change;
         }
 
+        // grotter
+        slider.settings.onTouchMove.call(el, e, change, value);
+        
         setPositionProperty(value, 'reset', 0);
       }
     };
@@ -1244,6 +1251,8 @@
       if (touches && touches.length > 1) return false;
       if (e.originalEvent.type == 'pointerup') return false;
       //
+
+      slider.settings.onTouchEnd.call(el, e);
 
       var orig    = e.originalEvent,
       touchPoints = (typeof orig.changedTouches !== 'undefined') ? orig.changedTouches : [orig],
@@ -1290,7 +1299,6 @@
             // slides were getting stuck mid-position on crazy swipes
             var position = el.getCurrentSlideElement().position();
             value = position.left * -1;
-            
             setPositionProperty(value, 'reset', 200);
 
             // setPositionProperty(value, 'reset', 200);
