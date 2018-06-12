@@ -27,10 +27,11 @@ var SkullWall = function () {
 			if (!_activeSection.hasClass('open')) return false;
 			
 			var slider = _activeSection.find('.slides').data('bxSlider');
+			var id = _activeSection.attr('id');
 
 			if (slider) {
 				if (slider.isWorking()) {
-					console.log('slider.isWorking');
+					console.log(id + ' slider is working');
 					return true;
 				}	
 			}
@@ -40,7 +41,7 @@ var SkullWall = function () {
 			if (controls.length != 1) return false;
 			
 			if (controls.hasClass('disabled')) {
-				console.log('slider controls disabled');
+				console.log(id + ' slider controls disabled');
 				return true;
 			}
 		}
@@ -139,48 +140,27 @@ var SkullWall = function () {
 	}
 
 	var _onNav = function (e) {
-		console.log('_onNav / ' + $.trim($(this).find('.en').text()));
-		if (e) console.log(e.type);
-
-		if (_isBTSOpen()) {
-			console.log('_isBTSOpen');
-			return false;
-		}
-
-		if (_isSliding()) {
-			console.log('_isSliding');
-			return false;
-		}
+		if (_isBTSOpen()) return false;
+		if (_isSliding()) return false;
 
 		var section = $(this).closest('section');
 		var otherSection = $('section').not(section);
 		var doNotExpand = (!$(this).parent().hasClass('nav-collapsed') && section.attr('id') == 'behind' && section.hasClass('collapsed'));
 
 		if (!otherSection.hasClass('collapsed') && !doNotExpand) {
-			console.log('_closeSection: ' + otherSection.attr('id'));
 			_closeSection(otherSection);	
 		}
 		
-		console.log('_openSection: ' + section.attr('id'));
 		_openSection(section, $(this).data('slide'), doNotExpand);
 
 		return false;
 	}
 
 	var _onCarouselNav = function (e) {
-		console.log('_onCarouselNav / ' + e.type + ' / ' + $.trim($(this).find('.en').text()));
-
 		$(this).removeClass('highlight');
 		
-		if (_isSliding()) {
-			console.log('_isSliding');
-			return false;
-		}
-
-		if ($(this).css('pointer-events') == 'none') {
-			console.log('pointer-events: none');
-			return false;
-		}
+		if (_isSliding()) return false;
+		if ($(this).css('pointer-events') == 'none') return false;
 
 		$('.thumbnails li').removeClass('active');
 		$(this).addClass('active');
