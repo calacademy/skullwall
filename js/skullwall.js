@@ -29,13 +29,20 @@ var SkullWall = function () {
 			var slider = _activeSection.find('.slides').data('bxSlider');
 
 			if (slider) {
-				if (slider.isWorking()) return true;	
+				if (slider.isWorking()) {
+					console.log('slider.isWorking');
+					return true;
+				}	
 			}
 
 			var controls = $('.bx-controls', _activeSection);
 
 			if (controls.length != 1) return false;
-			return controls.hasClass('disabled');
+			
+			if (controls.hasClass('disabled')) {
+				console.log('slider controls disabled');
+				return true;
+			}
 		}
 
 		return false;	
@@ -132,27 +139,46 @@ var SkullWall = function () {
 	}
 
 	var _onNav = function (e) {
-		if (_isBTSOpen()) return false;
-		if (_isSliding()) return false;
+		console.log('_onNav / ' + $.trim($(this).find('.en').text()));
+		if (e) console.log(e.type);
+
+		if (_isBTSOpen()) {
+			console.log('_isBTSOpen');
+			return false;
+		}
+
+		if (_isSliding()) {
+			console.log('_isSliding');
+			return false;
+		}
 
 		var section = $(this).closest('section');
 		var otherSection = $('section').not(section);
 		var doNotExpand = (!$(this).parent().hasClass('nav-collapsed') && section.attr('id') == 'behind' && section.hasClass('collapsed'));
 
 		if (!otherSection.hasClass('collapsed') && !doNotExpand) {
+			console.log('_closeSection: ' + otherSection.attr('id'));
 			_closeSection(otherSection);	
 		}
 		
+		console.log('_openSection: ' + section.attr('id'));
 		_openSection(section, $(this).data('slide'), doNotExpand);
 
 		return false;
 	}
 
 	var _onCarouselNav = function (e) {
+		console.log('_onCarouselNav / ' + e.type + ' / ' + $.trim($(this).find('.en').text()));
+
 		$(this).removeClass('highlight');
-		if (_isSliding()) return false;
+		
+		if (_isSliding()) {
+			console.log('_isSliding');
+			return false;
+		}
 
 		if ($(this).css('pointer-events') == 'none') {
+			console.log('pointer-events: none');
 			return false;
 		}
 
