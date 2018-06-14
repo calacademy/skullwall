@@ -23,30 +23,15 @@ var SkullWall = function () {
 	}
 
 	var _isSliding = function () {
-		if (_activeSection) {
-			if (!_activeSection.hasClass('open')) return false;
-			
-			var slider = _activeSection.find('.slides').data('bxSlider');
-			var id = _activeSection.attr('id');
-
-			if (slider) {
-				if (slider.isWorking()) {
-					console.log(id + ' slider is working');
-					return true;
-				}	
-			}
-
-			var controls = $('.bx-controls', _activeSection);
-
-			if (controls.length != 1) return false;
-			
-			if (controls.hasClass('disabled')) {
-				console.log(id + ' slider controls disabled');
-				return true;
+		if ($('html').hasClass('sliding')) {
+			if (_activeSection) {
+				if (!_activeSection.hasClass('subnav-open')) {
+					$('html').removeClass('sliding');
+				}
 			}
 		}
 
-		return false;	
+		return $('html').hasClass('sliding');	
 	}
 
 	var _onMediaButtonDown = function (e) {
@@ -100,6 +85,8 @@ var SkullWall = function () {
 
 	var _onClose = function () {
 		if (_isSliding()) return false;
+
+		$('html').removeClass('sliding');
 
 		var is3d = $('html').hasClass('3d');
 		_media.destroy();
@@ -172,7 +159,19 @@ var SkullWall = function () {
 		return false;
 	}
 
+	var _onCarouselSwipe = function (e, change, value) {
+		if (Math.abs(change) > 5) {
+			$('html').addClass('sliding');
+		}
+	}
+
+	var _onCarouselSwipeEnd = function (e) {
+		$('html').removeClass('sliding');
+	}
+
 	var _onSlideBefore = function (slide, oldIndex, newIndex) {
+		$('html').addClass('sliding');
+
 		$('.inactive-slide').removeClass('inactive-slide');
 		var slider = slide.parent('.slides');
 
@@ -182,6 +181,8 @@ var SkullWall = function () {
 	}
 
 	var _onSlideAfter = function (slide, oldIndex, newIndex) {
+		$('html').removeClass('sliding');
+
 		var slider = slide.parent('.slides');
 		slider.children('li').not(slide).addClass('inactive-slide');
 
@@ -287,6 +288,8 @@ var SkullWall = function () {
 	}
 
 	var _initCarousel = function (section, i) {
+		$('html').removeClass('sliding');
+
 		// options
 		var id = $('.slides', section).attr('id');
 		var slider = $('#' + id);
@@ -306,6 +309,8 @@ var SkullWall = function () {
 			touchEnabled: Modernizr.touch,
 			onSlideBefore: _onSlideBefore,
 			onSlideAfter: _onSlideAfter,
+			onTouchMove: _onCarouselSwipe,
+			onTouchEnd: _onCarouselSwipeEnd,
 			easing: 'cubic-bezier(.215, .61, .355, 1)',
 			slideWidth: $('#root').outerWidth()
 		};
@@ -434,6 +439,7 @@ var SkullWall = function () {
 		section.find('.highlight').removeClass('highlight');
 
 		$('#map li').addClass('show');
+		$('html').removeClass('sliding');
 		$('html').removeClass('content-open');
 		$('html').removeClass('shrink-wall');
 		$('html').removeClass(_activeSlideClass);
@@ -654,6 +660,7 @@ var SkullWall = function () {
 			_media.destroy();
 			$.fancybox.close(true);
 			$('html').removeClass('content-open');
+			$('html').removeClass('sliding');
 			
 			if (_activeSection) {
 				_activeSection.removeClass('subnav-open');
