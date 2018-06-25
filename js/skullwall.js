@@ -293,8 +293,7 @@ var SkullWall = function () {
 		// options
 		var id = $('.slides', section).attr('id');
 		var slider = $('#' + id);
-		var isPreviousInit = typeof(slider.data('bxSlider')) != 'undefined';
-
+		
 		var options = {
 			speed: 600,
 			controls: true,
@@ -341,10 +340,8 @@ var SkullWall = function () {
 		_setSlideClass(slider, targetSlide);
 		_activateWallThumbnail(slider, targetSlide);
 
-		if (!isPreviousInit) {
-			_onSlideAfter(sliderObj.getSlideElement(targetSlide));
-			_setSliderNavText(slider);	
-		}
+		_onSlideAfter(sliderObj.getSlideElement(targetSlide));
+		_setSliderNavText(slider);
 
 		// media buttons
 		$('.media-button').off();
@@ -430,6 +427,18 @@ var SkullWall = function () {
 		$('html').addClass('content-open');
 	}
 
+	var _destroySlider = function (section) {
+		var id = $('.slides', section).attr('id');
+		var slider = $('#' + id);
+
+		if (slider.data('bxSlider')) {
+			slider.data('bxSlider').destroySlider();
+		}
+
+		slider.children('li').removeClass();
+		$('html').removeClass('sliding');
+	}
+
 	var _closeSection = function (section) {
 		section.removeClass('open');
 		section.removeClass('subnav-open');
@@ -437,6 +446,8 @@ var SkullWall = function () {
 		section.addClass('collapsed');
 		section.find('.active').removeClass('active');
 		section.find('.highlight').removeClass('highlight');
+
+		_destroySlider(section);
 
 		$('#map li').addClass('show');
 		$('html').removeClass('sliding');
@@ -670,6 +681,11 @@ var SkullWall = function () {
 			$('html').removeClass('expanding');
 			$('html').removeClass(_activeSlideClass);
 			$('section').first().removeClass('collapsed');
+
+			// for good measure…
+			$('section').each(function () {
+				_destroySlider($(this));
+			});
 
 			$('html').addClass('attract');
     	});
