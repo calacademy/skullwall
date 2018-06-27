@@ -129,7 +129,8 @@ var SkullWall = function () {
 		var doNotExpand = (!$(this).parent().hasClass('nav-collapsed') && section.attr('id') == 'behind' && section.hasClass('collapsed'));
 
 		if (!otherSection.hasClass('collapsed') && !doNotExpand) {
-			_closeSection(otherSection);	
+			_closeSection(otherSection);
+			_destroySliders();	
 		}
 		
 		_openSection(section, $(this).data('slide'), doNotExpand);
