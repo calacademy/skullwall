@@ -131,7 +131,8 @@ body {
 			@include opacity(0);
 			pointer-events: none;
 
-			.content-open & {
+			.content-open &,
+			.media & {
 				@include transition(
 					opacity .4s $easing
 				);

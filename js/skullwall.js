@@ -450,6 +450,8 @@ var SkullWall = function () {
 		section.find('.active').removeClass('active');
 		section.find('.highlight').removeClass('highlight');
 
+		_media.destroy();
+		
 		$('#map li').addClass('show');
 		$('html').removeClass('sliding');
 		$('html').removeClass('content-open');
