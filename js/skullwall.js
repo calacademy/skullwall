@@ -22,18 +22,6 @@ var SkullWall = function () {
 		e.stopPropagation();
 	}
 
-	var _isSliding = function () {
-		if ($('html').hasClass('sliding')) {
-			if (_activeSection) {
-				if (!_activeSection.hasClass('subnav-open')) {
-					$('html').removeClass('sliding');
-				}
-			}
-		}
-
-		return $('html').hasClass('sliding');	
-	}
-
 	var _onMediaButtonDown = function (e) {
 		_stopPropagation(e);
 
@@ -64,7 +52,6 @@ var SkullWall = function () {
 		$(e.target).removeClass('highlight');
 		
 		if ($('html').hasClass('media') || $('html').hasClass('expanding')) return false;
-		if (_isSliding()) return false;
 
 		_media.destroy();
 
@@ -84,8 +71,6 @@ var SkullWall = function () {
 	}
 
 	var _onClose = function () {
-		if (_isSliding()) return false;
-
 		$('html').removeClass('sliding');
 
 		var is3d = $('html').hasClass('3d');
@@ -97,8 +82,15 @@ var SkullWall = function () {
 			return false;
 		}
 
+		// crazy clicking on fancybox
+		if ($('.fancybox-container').hasClass('fancybox-is-closing')) {
+			_destroyFancybox();
+			return false;
+		}
+
 		if ($('body').hasClass('fancybox-active')) {
 			$.fancybox.close(true);
+			_onExpandAfterClose();
 			return false;
 		}
 
@@ -117,6 +109,9 @@ var SkullWall = function () {
 			$('html').addClass('shrink-wall');
 		}
 
+		_destroySliders();
+		_destroyFancybox();
+
 		$('#map li').addClass('show');
 
 		return false;
@@ -128,8 +123,7 @@ var SkullWall = function () {
 
 	var _onNav = function (e) {
 		if (_isBTSOpen()) return false;
-		if (_isSliding()) return false;
-
+		
 		var section = $(this).closest('section');
 		var otherSection = $('section').not(section);
 		var doNotExpand = (!$(this).parent().hasClass('nav-collapsed') && section.attr('id') == 'behind' && section.hasClass('collapsed'));
@@ -146,7 +140,6 @@ var SkullWall = function () {
 	var _onCarouselNav = function (e) {
 		$(this).removeClass('highlight');
 		
-		if (_isSliding()) return false;
 		if ($(this).css('pointer-events') == 'none') return false;
 
 		$('.thumbnails li').removeClass('active');
@@ -427,15 +420,24 @@ var SkullWall = function () {
 		$('html').addClass('content-open');
 	}
 
-	var _destroySlider = function (section) {
-		var id = $('.slides', section).attr('id');
-		var slider = $('#' + id);
+	var _destroyFancybox = function () {
+		$.fancybox.destroy();
+		$('.fancybox-container').remove();
+		$('body').removeClass();
+		_onExpandAfterClose();
+	}
 
-		if (slider.data('bxSlider')) {
-			slider.data('bxSlider').destroySlider();
-		}
+	var _destroySliders = function () {
+		$('.slides').each(function () {
+			var slider = $('#' + $(this).attr('id'));
 
-		slider.children('li').removeClass();
+			if (slider.data('bxSlider')) {
+				slider.data('bxSlider').destroySlider();
+			}
+
+			slider.children('li').removeClass();
+		});
+		
 		$('html').removeClass('sliding');
 	}
 
@@ -446,8 +448,6 @@ var SkullWall = function () {
 		section.addClass('collapsed');
 		section.find('.active').removeClass('active');
 		section.find('.highlight').removeClass('highlight');
-
-		_destroySlider(section);
 
 		$('#map li').addClass('show');
 		$('html').removeClass('sliding');
@@ -578,7 +578,9 @@ var SkullWall = function () {
 		var slide = current.opts.$orig.closest('li');
 		var sliderObj = slide.closest('.slides').data('bxSlider');
 
-		sliderObj.jumpToSlide(slide.data('index'));
+		if (sliderObj) {
+			sliderObj.jumpToSlide(slide.data('index'));
+		}
 	}
 
 	var _onExpandAfterClose = function (instance, current) {
@@ -683,9 +685,8 @@ var SkullWall = function () {
 			$('section').first().removeClass('collapsed');
 
 			// for good measure…
-			$('section').each(function () {
-				_destroySlider($(this));
-			});
+			_destroySliders();
+			_destroyFancybox();
 
 			$('html').addClass('attract');
     	});
