@@ -75,6 +75,7 @@ var SkullWallMedia = function () {
 			error: function onError () {
 				console.log('sketchfab viewer error! :(');
 			},
+			autospin: 0.2,
 			autostart: 1,
 			ui_infos: 0,
 			ui_controls: 0,
