@@ -1,7 +1,10 @@
-.watermark,
-.gui,
 .widget,
+.model-inspector,
 .viewer-hint,
 .overlay.help {
     display: none !important;
+}
+
+.gui * {
+	pointer-events: none !important;
 }

@@ -75,12 +75,13 @@ var SkullWallMedia = function () {
 			error: function onError () {
 				console.log('sketchfab viewer error! :(');
 			},
-			autospin: 0.2,
+			autospin: 0.25,
 			autostart: 1,
-			ui_infos: 0,
-			ui_controls: 0,
-			ui_stop: 0,
-			ui_watermark: 0
+	        ui_infos: 0,
+	        ui_stop: 0,
+	        ui_hint: 0,
+	        ui_watermark: 0,
+	        ui_controls: 0
 		});
 
 		$('html').addClass('media');
