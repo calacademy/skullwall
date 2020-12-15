@@ -61,6 +61,8 @@ var SkullWallTranslate = function (data) {
 					if (container.length != 1) return true;
 
 					$.each(_languages, function (i, lg) {
+						if (typeof(slide[field + '_' + lg]) != 'string') return true;
+
 						var lgField = $('<div />');
 						lgField.addClass(lg);
 						lgField.html(slide[field + '_' + lg]);

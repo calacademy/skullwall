@@ -1,8 +1,16 @@
 .widget,
 .model-inspector,
 .viewer-hint,
-.overlay.help {
+.overlay.help,
+.titlebar,
+.gui > div,
+.gui > .controls > div {
     display: none !important;
+}
+
+.gui > .controls,
+.gui > .controls > .watermark {
+	display: block !important;
 }
 
 .gui * {
