@@ -22,6 +22,9 @@
         "js/jquery-1.11.3.min.js",
         "js/inject.js"
       ],
+      "css": [
+        "css/sketchfab.css"
+      ],
       "all_frames": true
     }
   ]
