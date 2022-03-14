@@ -1,7 +1,6 @@
 var SkullWallModel = function () {
-	var _endpoint = 'https://giants.calacademy.org/rest/';
-	var _callbackData = { callback: '_jqjsp' };
-	var _timeout = 60000;
+	var _endpoint = 'https://exhibits.calacademy.org/rest/';
+	var _isLocal = true;
 
 	var _data = {
 		'slides': 'skull-wall-slides',
@@ -59,23 +58,15 @@ var SkullWallModel = function () {
 	}
 
 	var _requestJsonp = function (path, success, error) {
-		$.jsonp({
-			timeout: _timeout,
-			data: _callbackData,
-			url: path,
-			success: function (data, textStatus) {
-				success(data);
-			},
-			error: _onError
-		});
+		$.getJSON(path, success).fail(_onError);
 	}
 
 	this.initialize = function () {
 		$.each(_data, function (key, val) {
 			var url = _endpoint + val + '.jsonp';
 			
-			if (SKULLWALL_CONFIG.isDev) {
-				url = 'jsonp/' + key + '.jsonp';
+			if (_isLocal) {
+				url = 'json/' + key + '.json';
 			}
 
 			_requestJsonp(url, function (data) {

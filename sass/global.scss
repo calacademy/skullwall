@@ -163,10 +163,26 @@ body {
 			bottom: 0;
 			background-color: #ffffff;
 
-			video, iframe, img {
+			video, model-viewer, img {
 				@include animation(fade-in 2s $easing);
 				width: 100%;
 				height: 100%;
+			}
+
+			.media.viewing-model & {
+				&:before {
+					@include box-shadow(inset 0px 0px 220px #000000);
+					pointer-events: none;
+					width: $stageWidth;
+					height: $stageHeight - $translationUIHeight;
+					content: '';
+					z-index: 99999;
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+				}
 			}
 
 			.media & {
@@ -1129,8 +1145,6 @@ body {
 							}
 
 							.model-button-container {
-								display: none;
-								
 								position: absolute;
 								bottom: 150px;
 								width: 50%;

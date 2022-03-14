@@ -108,7 +108,7 @@ var SkullWallTranslate = function (data) {
 		// caption files
 		$('video track').each(function () {
 			var lg = $(this).attr('srclang');
-			$(this).attr('src', dataObj['vtt_' + lg] + '?nocache=' + Math.random());
+			$(this).attr('src',  'videos/' + lg + '.vtt?nocache=' + Math.random());
 		});
 	}
 

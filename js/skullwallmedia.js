@@ -62,30 +62,61 @@ var SkullWallMedia = function () {
 		video.on('timeupdate', _onVideoProgress);
 	}
 
+	var _downloadPoster = function (model) {
+		model.toBlob().then(function (blob) {
+			// download file via base64
+			var reader = new FileReader();
+			reader.readAsDataURL(blob); 
+			
+			reader.onloadend = function() {
+				var download = document.createElement('a');
+				download.href = reader.result;
+				download.download = 'poster.png';
+				download.click();
+			}
+		});	
+	}
+
+	var _onModelVisible = function (e) {
+		if (!e.detail) return;
+		if (!e.detail.visible) return;
+
+		this.removeEventListener('model-visibility', _onModelVisible);
+		$('html').removeClass('loading');
+
+		// _downloadPoster(this);
+	}
+
 	this.viewModel = function (id) {
-		var iframe = $('<iframe src="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>');
-		_container.append(iframe);
-
-		var client = new Sketchfab('1.0.3', _container.find('iframe').get(0));
-
-		client.init(id, {
-			success: function onSuccess (api) {
-				api.start();
-			},
-			error: function onError () {
-				console.log('sketchfab viewer error! :(');
-			},
-			autospin: 0.25,
-			autostart: 1,
-	        ui_infos: 0,
-	        ui_stop: 0,
-	        ui_hint: 0,
-	        ui_watermark: 0,
-	        ui_controls: 0
-		});
+		// @see
+		// https://modelviewer.dev/docs/
 
 		$('html').addClass('media');
 		$('html').addClass('3d');
+		$('html').addClass('viewing-model');
+		$('html').addClass('loading');
+
+		var modelHtml = '<model-viewer touch-action="none" seamless-poster camera-controls';
+		
+		modelHtml += ' min-field-of-view="0deg"';
+		modelHtml += ' shadow-intensity="1"';
+		modelHtml += ' exposure="0.65"';
+		modelHtml += ' interpolation-decay="50"';
+		modelHtml += ' src="model/model.glb"';
+		modelHtml += ' poster="model/poster.png"';
+
+		modelHtml += '>';
+
+		// remove some default UI
+		modelHtml += '<div slot="progress-bar"></div>';
+		modelHtml += '<div slot="interaction-prompt"></div>';
+		
+		modelHtml += '</model-viewer>';
+		
+		_container.append(modelHtml);
+
+		var model = $('model-viewer').get(0);
+		model.addEventListener('model-visibility', _onModelVisible);
 	}
 
 	this.viewImage = function (src) {
@@ -133,7 +164,9 @@ var SkullWallMedia = function () {
 
 		$('html').removeClass('video-playing');
 		$('html').removeClass('3d');
+		$('html').removeClass('viewing-model');
 		$('html').removeClass('media');
+		$('html').removeClass('loading');
 		
 		_container.empty();
 	}
